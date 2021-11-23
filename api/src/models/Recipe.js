@@ -1,54 +1,47 @@
 const { DataTypes } = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-                return  sequelize.define('recipe', {
-                          id: {
-                            type: DataTypes.UUID,//genera numero random de letras y nums
-                            defaultValue: DataTypes.UUIDV4(),//es un datatype  de sequelize
-                            allowNull: false,
-                            primaryKey: true,
-                            
-                          },
 
-                          name: {
-                            type: DataTypes.STRING,
-                            allowNull: false,
-                            unique: true
-                          },
+  //lo primero que hago es crear los dos modelos que me pide el readme
+  //segundo, tengo que ver que son los datos que me esta pidiendo que traiga de la api
+  //tercero, me fijo cuales son obligatorios y cuales no, lo determina el * que dice el readme
+ //cuarto, tengo que fijarme como vienen los datos asi pongo que tipo de dato son
+  sequelize.define('recipe', {
+    id:{
+      type: DataTypes.UUID,
+      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    resume: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    score:{
+      type: DataTypes.INTEGER,
+    },
+    healthylevel:{
+      type: DataTypes.INTEGER,
+    },
+    stepbystep:{
+      type: DataTypes.TEXT,
+    },
+    //agrego el que yo voy a crear de la base de datos
+    createdInDb:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue: true
+    },
+    //tambien para tener en cuenta agrego la imagen
+    image:{
+      type: DataTypes.STRING,
 
-                          summary: {
-                            type: DataTypes.STRING,
-                            allowNull: false
-                          },
-
-                          spoonacularScore: {
-                            type: DataTypes.INTEGER,
-                            allowNull: false
-                          },
-
-                          healthScore: {
-                            type: DataTypes.INTEGER,
-                            allowNull: false
-                          },
-
-                          analyzedInstructions: {
-                            type: DataTypes.STRING,
-                            allowNull: false
-                          },
-
-                          image: {
-                            type: DataTypes.STRING,
-                            allowNull: false
-                          },
-                          
-                          createdInDb: {
-                            type: DataTypes.BOOLEAN,
-                            allowNull: false,
-                            defaultValue: true,
-                        }
-                  }
-            );
-        };
+    }
+  }, {timestamps:false});
+};
