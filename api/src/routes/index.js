@@ -1,12 +1,11 @@
 const {Router}= require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const axios = require('axios').default;
-const {Recipe, DietType} = require('../db')
+const {default : axios} = require('axios');
+const {Recipe, Diet} = require('../db')
 const router = Router();
 const Sequelize = require('sequelize');
-const { API_KEY } = process.env;
-const Op = Sequelize.Op;
+const {API_KEY} = process.env;
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -25,11 +24,11 @@ const getApiInfo = async () =>{
                                 name: info.title,
                                 resume: info.summary,
                                 score: info.spoonacularScore,
-                                healthylevel: info.healthScore,
-                                stepByStep: info.analyzedInstructions.map(obj => obj.steps.map(obj2 => obj2.step)),
+                                healthylevel: info.healthylevel,
+                                stepbystep: info.analyzedInstructions.map(path => path.steps.map(pathTwo => pathTwo.step)),
                                 image: info.image,
                                 id :info.id,
-                                diets: info.diets.map((diet) => diet),
+                                diet: info.diets.map((diet) => diet),
                             //aca pongo todos los datos que yo le pido que me traiga de la api, si quisiera algun otro, lo pongo aqui
                         }
                 })
@@ -42,19 +41,30 @@ const getApiInfo = async () =>{
 const getDbInfo = async () =>{
         return await Recipe.findAll({ 
                 include:{
-                        model: DietType,
-                        atributes:['name'],
-                        through:{
-                                atributes:[],
-                        }
+                        model : Diet
+                        
                 }
         })
 }
 //tercero, concateno a los dos, los datos de la api y la base de datos en uno
 const getAllRecipie = async () => {
         const apiInfo = await getApiInfo();
-        const dbfInfo = await getDbInfo();
-        const allInfo = apiInfo.concat(dbfInfo);
+        const dbInfo = await getDbInfo();
+        const dbInfoFilter = dbInfo.map(element =>{
+                return{
+                                name : element.name,
+                                resume: element.resume,
+                                score: element.score,
+                                healthylevel: element.healthylevel,
+                                stepbystep: element.stepbystep,
+                                image: element.image,
+                                id :element.id,
+                                diet: element.diets.map(el=>{
+                                        return el.name;
+                                })
+                }
+        })
+        const allInfo = dbInfoFilter.concat(apiInfo);
         return allInfo;
 }
 
@@ -62,110 +72,74 @@ const getAllRecipie = async () => {
 
 //NO TOCAR ANDA PERFECTA LA RUTA jaja
 //hago la primera ruta, que me traiga todas las recetas, las pido por query
-router.get('/recipes', async (req, res) => {
+        router.get('/recipes', async (req, res) => {
+                
+                const info = await getAllRecipie();
+                const name = req.query.name;
+                if(!name){
+                        return res.status(200).json(info);
+                } //le pido que me pase la receta que estoy buscando, que las pase todas a minusculas
+                const fillInfo= await info.filter(d => d.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+                //si no encuentro esa informacion que me tire el mensaje de que no hay coincidencia alguna
+                fillInfo.length ? res.status(200).json(fillInfo) : res.status(404).send("There is no coincidence");
         
-        const info = await getAllRecipie();
-        const name = req.query.name;
-            if(!name){
-                return res.status(200).json(info);
-        } //le pido que me pase la receta que estoy buscando, que las pase todas a minusculas
-        const fillInfo= await info.filter(d => d.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
-        //si no encuentro esa informacion que me tire el mensaje de que no hay coincidencia alguna
-        fillInfo.length ? res.status(200).json(fillInfo) : res.status(404).send("There is no coincidence");
-    
-})
+        })
 
-//NO TOCAR RUTA ANDA PERFECTA
-//creo una ruta que me traiga los datos del id
-//lo que yo quiero es poner el numero de id y que traiga esa sola receta, si no existe que me muestre el msj adecuado
-router.get('/recipes/:id', async (req, res) =>{
-        const id = req.params.id; //la hago utilizando params
-        const allRecipe = await getAllRecipie();
-            if(id){
-            const fillRecipe = await allRecipe.filter(element => element.id.toString() === id);
-            fillRecipe.length ? res.status(200).json(fillRecipe) : res.status(404).send("Recipe doesn't exist");
-        }
-        
-})
-
-//NO TOCAR RUTA ANDA PERFECTA jaja
-//creo una ruta que me traiga los tipos de dietas que existen o posibles
-router.get('/types', async (req, res) => {
-        const allData = await axios.get(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
- //vuelvo a pedir toda la info de la api 
-        const diet = allData.data.results.map(elemento => elemento.diets) //traigo todos los datos y le aplico un map
-        const diet2 = []
-        diet.map(d2 => {
-                for(var i=0;i<d2.length; i++){
-                     diet2.push(d2[i]); //lo pusheo
-                  //return d2[i];
+        //NO TOCAR RUTA ANDA PERFECTA
+        //creo una ruta que me traiga los datos del id
+        //lo que yo quiero es poner el numero de id y que traiga esa sola receta, si no existe que me muestre el msj adecuado
+        router.get('/recipes/:id', async (req, res) =>{
+                const id = req.params.id; //la hago utilizando params
+                const allRecipe = await getAllRecipie();
+                if(id){
+                const fillRecipe = await allRecipe.filter(element => element.id.toString() === id);
+                fillRecipe.length ? res.status(200).json(fillRecipe) : res.status(404).send("Recipe doesn't exist");
                 }
-            })
-            diet2.forEach(element => {
-                if(element){     
-                        DietType.findOrCreate({ //le pregunto si lo encontro o si lo creo
-                        where: {name: element}
-            })
-        }
-        });
-                    const allDiet = await DietType.findAll();
-                    res.json(allDiet);
-
+                
 })
+        router.get('/types', async(req,res) => {
+                const dataDb = await Diet.findAll()
+                res.send(dataDb)
+        })
 
 //la ruta del post es para crear una nueva receta
 // y por ultimo hago una ruta para crear una nueva receta
 router.post('/recipe', async (req, res) => {
-        try{
-            let {
+                try{
+                const{
+                                name, 
+                                score,
+                                resume,
+                                stepbystep,
+                                healthylevel,
+                                image,
+                                //createdInDb,
+                                diet,
+                        } = req.body; //recolecto todos los datos del body
+                let dietDb = await Diet.findAll({
+                        where : {
+                        name:diet
+                        }
+                })
+                let newRecipe= await Recipe.create({
                         name, 
                         score,
                         resume,
-                        stepByStep,
+                        stepbystep,
                         healthylevel,
                         image,
-                        //createdInDb,
-                        diets,
-                } = req.body; //recolecto todos los datos del body
+                        //createdInDb
+                }) //los creo en la base de datos
 
-            let newRecipe= await Recipe.create({
-                    name, 
-                    score,
-                    resume,
-                    stepbystep: stepByStep,
-                    healthylevel,
-                    image,
-                    //createdInDb
-            }) //los creo en la base de datos
-
-            let arreglo= Array.isArray(diets) ? diets: [diets];
-
-            let dietDb = await DietType.findAll({
-                    where:{
-                            name:{
-                                    [Op.in] : arreglo,
-                                    
-                            }
-                    }
-            })
-                    newRecipe.addDietType(dietDb);
-                    res.status(200).send("Recipe succesfully created!");
-                } catch (error) {
-                            console.log(error)
-                    }
-            })
+                        newRecipe.addDiet(dietDb);
+                        res.status(200).send(newRecipe);
+                        } catch (error) {
+                                console.log(error)
+                        }
+                })
 
 
-//todo el back funciona perfectamente no hay que tocar nada mas ni modificar nada, el post tmb anda, se pueden crear recetas
-//desde aca.
-
-//simplemente lo hice para probar 
-router.get('/', async (req, res) =>{
-        // const info = await getAllRecipie();
-        // res.status(200).json(info);
-        res.send("<h1>Para ver si funciona</h1>")
-})
 
 
-module.exports = router;
+        module.exports = router;
 

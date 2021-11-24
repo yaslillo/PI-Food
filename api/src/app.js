@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index');
+const axios = require('axios')
 // const errorHandler = require ('./utils/middlewares/errorHandler');
 // const setHeaders = require ('./utils/middlewares/setHeaders')
 require('./db');
