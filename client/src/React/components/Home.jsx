@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {getRecipes} from '../../redux/Action/index';
+import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDietTypes } from '../../redux/Action/index';
 import {Link} from 'react-router-dom';
 import Card from './Card';
 import Paginado from './Paginado';
 
 export default function Home (){
-
+const[order,setOrder] = useState();
 const dispatch = useDispatch()
 const allRecipes = useSelector((state) => state.recipes)
-        console.log(allRecipes)
+
 //Paginado.-----------------------------------------------------------------------//
 const [currentPage,setCurrentPage] = useState(1);
 const[recipesPerPage,setRecipesPerPage] =useState(9);
@@ -25,14 +25,33 @@ const paginado = (pageNumber) => {
 //---------------------------------------------------------------------------------//
 
 useEffect(() =>{
-    dispatch(getRecipes());
+    dispatch((getRecipes));
 },[dispatch])
 
 function handlerClick(e){
     e.preventDefault(getRecipes());
     dispatch(getRecipes());
 }
+//Filtro por puntuación.
+function handleOrderByScore(e){
+    e.preventDefault();
+    dispatch(orderByScore(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`);
+}
 
+//Filtro para ordenar alfabeticamente
+function handleOrderByAlpha(e){
+    e.preventDefault();
+    dispatch(orderByAlphabetics(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`);
+}
+
+//Filtro por tipo de dieta
+function handleFilterByDietType(e){
+    dispatch(setFilterByDietTypes(e.target.value));             
+}
 
 
     return(
@@ -43,31 +62,29 @@ function handlerClick(e){
                 volver a cargar recetas
                 </button>
             <div>
-                <select>
-                    <option value="asc">Ascendente</option>
-                    <option value="desc">Descendente</option>
+                <select onChange={e => handleOrderByScore(e)}>
+                    <option value="all">Orden por puntuación</option>
+                    <option value="asc">Puntuación Asc</option>
+                    <option value="desc">Puntuación Desc</option>
+                </select> 
+                <select onChange={e => handleOrderByAlpha(e)}>
+                    <option value="all">Orden Alfabetico</option>
+                    <option value="A-Z">Orden de A - Z</option>
+                    <option value="Z-A">Orden de Z - A</option>
+                </select> 
+                <select onChange={e => handleFilterByDietType(e)}>
+                    <option value="all"> Tipo de Dieta</option>
+                    <option value="gluten free">Gluten Free</option>
+                    <option value="dairy free">Dairy Free</option>
+                    <option value="lacto ovo vegetarian">Lacto ovo Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                        <option value="paleolithic">Paleolithic</option>
+                    <option value="primal">Primal</option>
+                    <option value="pescatarian">Pescatarian</option>
+                    <option value="fodmap friendly">Fodmap Friendly</option>
+                    <option value="whole 30">Whole 30</option>
                 </select>
-                <select
-                >
-                    <option value= "All">Todos</option>
-                    <option value="dairy free">dairy free</option>
-                    <option value= "fodmap friendly">fodmap friendly</option>
-                    <option value="gluten free">gluten free</option>
-                    <option value="lacto ovo vegetarian">lacto ovo vegetarian</option>
-                    <option value= "paleolithic">paleolithic</option>
-                    <option value= "primal">primal</option>
-                    <option value="vegan">vegan</option>
-                </select>
-                <select>
-                    <option value="All">Todos</option>
-                    <option value="diet">Tipo de dieta</option>
-                </select>
-                    
-                <select>
-                    <option value="All">Todos</option>
-                    <option value="Created">Creados</option>
-                    <option value="api">Existentes</option>
-                </select>
+            
                 <Paginado
                 recipesPerPage= {recipesPerPage}
                 allRecipes={ allRecipes.length}
