@@ -97,10 +97,10 @@
                                 : allRecipes2.filter(el => !el.createdInDb)
                                 return{
                                         ...state,
-                                        recipes: action.payload ==="All" ? allRecipes2 : createdFilter
+                                        recipes: action.payload === "All" ? allRecipes2 : createdFilter
                                 }
 
- //Hago un caso para usar en mi search bar, una vez hecha la accion;
+//Hago un caso para usar en mi search bar, una vez hecha la accion;
 
                         case "GET_NAME_RECIPE":
                                 return{ 

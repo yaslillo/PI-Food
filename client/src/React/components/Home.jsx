@@ -93,7 +93,7 @@ function handleFilterCreated(e) {
                 <select onChange={e => handleFilterCreated(e)}>
                     <option value="All"> Todos</option>
                     <option value="created">Creados</option>
-                    <option value="existing">Existentes</option>
+                    <option value="api">Existentes</option>
                 </select>
             
                 <Paginado
