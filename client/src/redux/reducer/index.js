@@ -1,95 +1,140 @@
-    const initialState = {
-    recipes : [],
-    allRecipes : [],
-    recipeTypes: [],
-    detail: [],
-    }
+        const initialState = {
+        recipes : [],
+        allRecipes : [],
+        recipeTypes: [],
+        detail: [],
+        
+        }
 
 
-function rootReducer (state = initialState, action){
-        switch(action.type) {
-            case "GET_RECIPES":
-                    return{
-                        ...state,
-                            recipes: action.payload,
-                            allRecipes : action.payload
-            } 
-          //hago el primer filtro que es el ascendente y descendente en este caso por puntuación (score)
-            case "ORDER_BY_SCORE":
-            let orderScore = action.payload==="asc" ? 
-            state.recipes.sort(function (a,b){
-                    if(a.score > b.score){
-                            return 1;
-                    }
-                    if(b.score > a.score){
-                            return -1;
-                    }
-                    return 0;
-            }) :
-            state.recipes.sort(function (a,b){
-                    if(a.score > b.score){
-                            return -1;
-                    }
-                    if(b.score > a.score){
-                            return 1;
-                    }
-                    return 0;
-            });
-                    return{
-                    ...state,
-                    recipes:orderScore
-            }
-                //Logica del filtro que ordena las recetas por orden alfabetico
-            case 'ORDER_BY_ALPHA':
-                let orderAlph = action.payload === 'A-Z' ? state.allRecipes.sort(function (a, b) {
-                            if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                                        return 1;
-                            };
-                            if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                                return -1;
-                            };
-                            return 0;
-                }) : state.allRecipes.sort(function (a, b) {
-                        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                                return -1;
-                        };
-                        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        function rootReducer (state = initialState, action){
+                switch(action.type) {
+                case "GET_RECIPES":
+                        return{
+                                ...state,
+                                recipes: action.payload,
+                                allRecipes : action.payload
+                } 
+//Filtro que ordena por puntuación de receta ascendente y descendente;(score)
+                case "ORDER_BY_SCORE":
+                let orderScore = action.payload==="asc" ? 
+                state.recipes.sort(function (a,b){
+                        if(a.score > b.score){
                                 return 1;
-                        };
+                        }
+                        if(b.score > a.score){
+                                return -1;
+                        }
+                        return 0;
+                }) :
+                state.recipes.sort(function (a,b){
+                        if(a.score > b.score){
+                                return -1;
+                        }
+                        if(b.score > a.score){
+                                return 1;
+                        }
                         return 0;
                 });
-                return {
+                        return{
                         ...state,
-                        recipes: orderAlph
+                        recipes:orderScore
                 }
-                     //hago el ultimo filtro que es el que me hago por tipo de dieta
-            case "FILTER_BY_DIET_TYPES":
-                const allRecipes = state.allRecipes
-                const dietApi = [] //traigo los datos de la api
-                const dietDb = [] //los de la base de datos
-                allRecipes.forEach(e => {
-                    if (e.hasOwnProperty('diets') && e.diets.includes(action.payload)) {
-                        dietApi.push(e)
-                    }
-                })
-    
-                allRecipes.forEach(e => {
-                    if (e.hasOwnProperty('Diets') && e.Diets.map(el => el.name === action.payload)) {
-                        dietDb.push(e)
-                    }
-                })
-                const find = dietApi.concat(dietDb) //concateno los dos
-                if (find.length) {
-                    return {
+//Filtro que ordena las recetas por orden alfabetico;
+                case 'ORDER_BY_ALPHA':
+                        let orderAlph = action.payload === 'A-Z' ? state.allRecipes.sort(function (a, b) {
+                                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                                                return 1;
+                                };
+                                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                                        return -1;
+                                };
+                                return 0;
+                        }) : state.allRecipes.sort(function (a, b) {
+                                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                                        return -1;
+                                };
+                                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                                        return 1;
+                                };
+                                return 0;
+                        });
+                        return {
+                                ...state,
+                                recipes: orderAlph
+                        }
+                
+//Filtro que ordena por tipo de dieta;
+                        case "FILTER_BY_DIET_TYPES":
+                        const allRecipes = state.allRecipes
+                        const dietsApi = [] 
+                        const dietsDb = [] 
+                        allRecipes.forEach(e => {
+                                if (e.hasOwnProperty('diet') && e.diet.includes(action.payload)) {
+                                dietsApi.push(e)
+                                }
+                        })
+                        console.log('entra aca')
+                        allRecipes.forEach(e => {
+                        if (e.hasOwnProperty('Diet') && e.Diet.map(c => c.name === action.payload)) {
+                                dietsDb.push(e)
+                        }
+                        })
+                        const find = dietsApi.concat(dietsDb)
+                        if (find.length) {
+                        return {
+                                ...state,
+                                recipes: find
+                        }
+                        };
+                        break;
+
+//Filtro que ordena por creados o existentes;
+
+                        case "FILTER_CREATED":
+                                const allRecipes2 = state.allRecipes
+                                const createdFilter = action.payload === 'created' ? allRecipes2.filter (el => el.createdInDb) 
+                                : allRecipes2.filter(el => !el.createdInDb)
+                                return{
+                                        ...state,
+                                        recipes: action.payload ==="All" ? allRecipes2 : createdFilter
+                                }
+
+ //Hago un caso para usar en mi search bar, una vez hecha la accion;
+
+                        case "GET_NAME_RECIPE":
+                                return{ 
+                                        ...state,
+                                        recipes : action.payload,
+                                }
+                case "GET_RECIPE_TYPE":
+                        return{
+                                ...state,
+                                recipeTypes: action.payload,
+                        }
+ //siempre necesito ponerlos en el reducer, tiene que estar el post.
+                        case "POST_RECIPE":
+                                return{
+                                        ...state,
+                                }
+//y este es el ultimo caso que necesito hacer que es por el detalle;
+                                case "GET_DETAIL":
+                                        return{
+                                                ...state,
+                                                detail : action.payload,
+                                        }
+//este es el ultimo;
+
+                                case "SET_SORTING":
+                        return {
                         ...state,
-                        recipes: find
-                    }
+                        sorting: action.payload,
                 };
-                break;
-                    
+                
                 default:
-                    return state;
+                        return state;
         }
         }
-        
-        export default rootReducer;
+
+                
+                export default rootReducer;
