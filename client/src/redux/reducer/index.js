@@ -1,7 +1,7 @@
         const initialState = {
         recipes : [],
         allRecipes : [],
-        recipeTypes: [],
+        types: [],
         detail: [],
         
         }
@@ -17,7 +17,7 @@
                 } 
 //Filtro que ordena por puntuación de receta ascendente y descendente;(score)
                 case "ORDER_BY_SCORE":
-                let orderScore = action.payload==="asc" ? 
+                let orderScore = action.payload === "asc" ? 
                 state.recipes.sort(function (a,b){
                         if(a.score > b.score){
                                 return 1;
@@ -100,19 +100,20 @@
                                         recipes: action.payload === "All" ? allRecipes2 : createdFilter
                                 }
 
-//Hago un caso para usar en mi search bar, una vez hecha la accion;
+//Hago un caso para usar en mi barra de busqueda (search bar), una vez hecha la accion;
 
                         case "GET_NAME_RECIPE":
                                 return{ 
                                         ...state,
                                         recipes : action.payload,
                                 }
+//Hago este caso para crear mis dietas;
                 case "GET_RECIPE_TYPE":
                         return{
                                 ...state,
-                                recipeTypes: action.payload,
+                                types: action.payload,
                         }
- //siempre necesito ponerlos en el reducer, tiene que estar el post.
+// traigo la ruta de post .
                         case "POST_RECIPE":
                                 return{
                                         ...state,

@@ -5,6 +5,7 @@ import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCre
 import {Link} from 'react-router-dom';
 import Card from './Card';
 import Paginado from './Paginado';
+import SearchBar from "./SearchBar";
 
 export default function Home (){
 const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const allRecipes = useSelector((state) => state.recipes)
 //Paginado.-----------------------------------------------------------------------//
 const [currentPage, setCurrentPage] = useState(1);
 const [recipesPerPage, setRecipesPerPage] = useState(9);
-const [order, setOrder] = useState();
+const [order, setOrder] = useState('');
 const indexOfLastRecipes = currentPage * recipesPerPage;
 const indexOfFirstRecipes = indexOfLastRecipes - recipesPerPage;
 const currentRecipes = allRecipes.slice(indexOfFirstRecipes,indexOfLastRecipes);
@@ -38,7 +39,7 @@ function handleOrderByScore(e){
     setOrder(`Ordenado ${e.target.value}`);
 }
 //---------------------------------------------------------------------------------//
-//Filtro para ordenar alfabeticamente
+//Filtro para ordenar alfabeticamente;
 function handleOrderByAlpha(e){
     e.preventDefault();
     dispatch(orderByAlphabetics(e.target.value));
@@ -46,7 +47,7 @@ function handleOrderByAlpha(e){
     setOrder(`Ordenado ${e.target.value}`);
 }
 //-----------------------------------------------------------------------------------//
-//Filtro por tipo de diet
+//Filtro por tipo de diet;
 function handleSetFilterByDiets(e) {
     e.preventDefault();
     dispatch(setFilterByDiets(e.target.value));
@@ -54,12 +55,14 @@ function handleSetFilterByDiets(e) {
     setOrder(`Ordenado ${e.target.value}`);
 }
 //------------------------------------------------------------------------------------//
+//Filtro por Creados o existentes;
 function handleFilterCreated(e) {
     e.preventDefault();
     dispatch(filterCreated(e.target.value));
     setCurrentPage(1);
     setOrder(`Ordenado ${e.target.value}`)
 }
+//------------------------------------------------------------------------------------//
     return(
         <div>
             <Link to='/recipes'>Crear Receta</Link>
@@ -79,7 +82,7 @@ function handleFilterCreated(e) {
                     <option value="Z-A">Orden de Z - A</option>
                 </select> 
                 <select onChange={e => handleSetFilterByDiets(e)}>
-                    <option value="all"> Tipo de Dieta</option>
+                    <option value="all"> Tipo de dieta</option>
                     <option value="gluten free">Gluten Free</option>
                     <option value="dairy free">Dairy Free</option>
                     <option value="lacto ovo vegetarian">Lacto ovo Vegetarian</option>
@@ -95,7 +98,7 @@ function handleFilterCreated(e) {
                     <option value="created">Creados</option>
                     <option value="api">Existentes</option>
                 </select>
-            
+                <SearchBar/>
                 <Paginado
                 recipesPerPage= {recipesPerPage}
                 allRecipes={ allRecipes.length}

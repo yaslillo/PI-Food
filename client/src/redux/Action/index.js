@@ -49,15 +49,15 @@ import axios from "axios";
                 }
         }
 
-//Hago la ruta que me traiga la informacion para poder hacer la barra de busqueda po nombre.
+//Hago la ruta que me traiga la informacion para poder hacer la barra de busqueda por nombre.
 //tengo que traerme la ruta del back para que esto quede concatenado, tengo que siempre agregarle el payload
 //yo pongo payload porque es lo que le estoy pasando aca, si fuera name, le paso name,
 //siempre tengo que hacerlo de esta manera;
 //es lo que devuelve la ruta una vez que le asigno algo por name
-        export function getNameRecipe(payload){ 
+        export function getNameRecipes(name){ 
                 return async function(dispatch){ 
                         try{ 
-                                var json = await axios.get('http://localhost:3001/recipes?name='+payload);
+                                var json = await axios.get('http://localhost:3001/recipes?name=' + name);
                                 return dispatch({
                                         type: "GET_NAME_RECIPE",
                                         payload: json.data
@@ -73,15 +73,15 @@ import axios from "axios";
 //solamente me va a traer el name y el id;
         export function getRecipeType(){
                 return async function (dispatch){
-                        var recipesTypes = await axios.get('http://localhost:3001/types');
+                const info = await axios.get('http://localhost:3001/types');
                         return dispatch({
                                 type: "GET_RECIPE_TYPE",
-                                payload: recipesTypes.data,
+                                payload: info.data,
                         }) 
                 }
         }
 
-//Hago una ruta para la creacion de una receta;
+//Me traigo la ruta para la creacion de una receta;
         export function postRecipe(payload){
                 return async function (dispatch){
                         const response = await axios.post('http://localhost:3001/recipe',payload)
@@ -89,7 +89,7 @@ import axios from "axios";
                 }
         }
 
-//Hago una ruta por id, para la parte del detalle;
+//Me traigo la ruta por id, para la parte del detalle;
         export function getDetail(id){
                 return async function(dispatch){
                         try{
