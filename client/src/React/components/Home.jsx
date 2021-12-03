@@ -65,7 +65,7 @@ function handleFilterCreated(e) {
 //------------------------------------------------------------------------------------//
     return(
         <div>
-            <Link to='/recipes'>Crear Receta</Link>
+            <Link to='/recipe'>Crear Receta</Link>
             <h1>LAS MEJORES RECETAS</h1> 
             {/* <button onClick={e => { handlerClick (e)}}>
                 volver a cargar recetas

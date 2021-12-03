@@ -81,7 +81,7 @@ import axios from "axios";
                 }
         }
 
-//Me traigo la ruta para la creacion de una receta;
+//Me traigo las para la creacion de una receta;
         export function postRecipe(payload){
                 return async function (dispatch){
                         const response = await axios.post('http://localhost:3001/recipe',payload)

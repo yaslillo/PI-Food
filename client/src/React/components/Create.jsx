@@ -7,7 +7,6 @@ import { useDispatch,useSelector } from 'react-redux';
 export default function RecipesCreate() {
     const dispatch = useDispatch()
     const types = useSelector((state) => state.types)
-        console.log(types)
 
     const [input,setInput] = useState({
                 name:"",
@@ -18,6 +17,8 @@ export default function RecipesCreate() {
                 image:"",
                 diet:[]
     })
+
+
 //Función que me dispara la acción......................................//
 function handleChange(e){
     setInput({
@@ -26,10 +27,6 @@ function handleChange(e){
     })
     console.log(input)
 }
-//-----------------------------------------------------------------------//
-    useEffect(() => {
-        dispatch(getRecipeType())
-    },[])
 
 //Función para disparar la acción de select-------------------------------//
 function handleSelect(e){
@@ -37,24 +34,59 @@ function handleSelect(e){
         ...input,
         diet : [...input.diet, e.target.value]
     })
+    console.log(input.diet)
 }
+
 //Función para disparar la acción de la receta creada---------------------//
 function handleSubmit(e){
     e.preventDefault();
-    console.log(input)
-    dispatch(postRecipe(input))
-    alert("Receta creada!!!")
+const {name,resume,score,stepbystep,healthylevel,image,diet} = input;
+
+if(name === undefined || name.length < 3) {
+    return alert ('Nombre invalido');
+
+}else if (resume === undefined || resume.length < 5){
+    return alert ('Resumen invalido');
+
+}else if (score === undefined || score < 10){
+
     setInput({
-        name:"",
-        resume:"",
+        ...input,
         score: "",
-        stepbystep:"",
-        healthylevel:"",
-        image:"",
-        diet:[]
+    });
+    return alert ('Puntaje incorrecto')
+}else if (stepbystep === undefined){
+    return alert ('Completar campo')
+}else if(healthylevel === undefined || healthylevel < 10){
+    setInput ({
+        ...input,
+        healthylevel: "",
     })
-    
+}else if(image === undefined){
+    return alert('Imagen invalida')
+}else if (diet === undefined){
+    return alert('No se eligió dieta')
 }
+
+dispatch(postRecipe(input));
+alert ('Receta creada');
+setInput({
+            name : "",
+            resume : "",
+            score : "",
+            stepbystep: "",
+            healthylevel : "",
+            image : "",
+            diet : [],
+})
+
+}
+
+
+useEffect(() => {
+    dispatch(getRecipeType())
+},[dispatch]);
+
     return (
         <div>
             <Link to='/home'><button>Volver</button></Link>

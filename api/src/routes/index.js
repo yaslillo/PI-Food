@@ -61,7 +61,8 @@ const getAllRecipie = async () => {
                                 id :element.id,
                                 diet: element.diets.map(el=>{
                                         return el.name;
-                                })
+                                }),
+                                createdInDb: element.createdInDb
                 }
         })
         const allInfo = dbInfoFilter.concat(apiInfo);
@@ -113,7 +114,6 @@ router.post('/recipe', async (req, res) => {
                                 stepbystep,
                                 healthylevel,
                                 image,
-                                //createdInDb,
                                 diet,
                         } = req.body; //recolecto todos los datos del body
                 let dietDb = await Diet.findAll({
@@ -128,7 +128,7 @@ router.post('/recipe', async (req, res) => {
                         stepbystep,
                         healthylevel,
                         image,
-                        //createdInDb
+                        diet,
                 }) //los creo en la base de datos
 
                         newRecipe.addDiet(dietDb);

@@ -22,7 +22,7 @@ const {conn,Recipe,Diet} = require ('./src/db.js')
 const {API_KEY} = process.env;
 const { default : axios} = require('axios')
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async() => {
+conn.sync({ force: false }).then(async() => {
   
     const allDiet = await Diet.findAll();
 
