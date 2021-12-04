@@ -108,29 +108,26 @@
                                         recipes : action.payload,
                                 }
 //Hago este caso para crear mis dietas;
+
                 case "GET_RECIPE_TYPE":
                         return{
                                 ...state,
                                 types: action.payload,
                         }
-// traigo la ruta de post .
-                        case "POST_RECIPE":
+// traigo la ruta de post;
+
+                case "POST_RECIPE":
                                 return{
                                         ...state,
                                 }
-//y este es el ultimo caso que necesito hacer que es por el detalle;
-                                case "GET_DETAIL":
-                                        return{
-                                                ...state,
-                                                detail : action.payload,
-                                        }
-//este es el ultimo;
+//Hago un caso para traer el detalle;
 
-                                case "SET_SORTING":
-                        return {
-                        ...state,
-                        sorting: action.payload,
-                };
+                case "GET_DETAILS":
+                                return{
+                                        ...state,
+                                        detail : action.payload,
+                                }
+                
                 
                 default:
                         return state;

@@ -3,8 +3,9 @@ import axios from "axios";
 
 //Acá creo mis acciones!!!
 
-//La primera función es para traerme todas las recetas desde el back;
+
 //Hago la conexion entre el back y el front;
+//Me traigo la ruta que trae la info de todas las recetas;
 
         export function getRecipes(){
                 return async function(dispatch) {
@@ -16,8 +17,8 @@ import axios from "axios";
                 }
         }
 
-//El primer filtro es el ascendente y el descendente
-//Por score
+//El primer filtro es el ascendente y el descendente por score;
+
         export function orderByScore(payload){
                 return{
                         type: "ORDER_BY_SCORE",
@@ -25,7 +26,7 @@ import axios from "axios";
                 }
         }
 
-//El segundo filtro que es el que los ordena de la A-Z y Z-A
+//El segundo filtro ordena alfabeticamente en ascenso y descenso;
         export function orderByAlphabetics(payload) {
                 return {
                 type: 'ORDER_BY_ALPHA',
@@ -33,7 +34,7 @@ import axios from "axios";
                 }
         }
 
-// ESte filtro es para las dietas
+//Filtro es para las dietas;
         export function setFilterByDiets(payload){
                 console.log(payload);
                 return {
@@ -49,15 +50,12 @@ import axios from "axios";
                 }
         }
 
-//Hago la ruta que me traiga la informacion para poder hacer la barra de busqueda por nombre.
-//tengo que traerme la ruta del back para que esto quede concatenado, tengo que siempre agregarle el payload
-//yo pongo payload porque es lo que le estoy pasando aca, si fuera name, le paso name,
-//siempre tengo que hacerlo de esta manera;
-//es lo que devuelve la ruta una vez que le asigno algo por name
+//Exporto la ruta  para poder hacer busqueda por nombre.
+
         export function getNameRecipes(name){ 
                 return async function(dispatch){ 
                         try{ 
-                                var json = await axios.get('http://localhost:3001/recipes?name=' + name);
+                                var json = await axios.get("http://localhost:3001/recipes?name=" + name);
                                 return dispatch({
                                         type: "GET_NAME_RECIPE",
                                         payload: json.data
@@ -68,12 +66,11 @@ import axios from "axios";
 
                 }
         }
+//Me traigo la ruta de types. (tipo de dieta);
 
-//vamos a traer las recetas y tipos desde el back;
-//solamente me va a traer el name y el id;
         export function getRecipeType(){
                 return async function (dispatch){
-                const info = await axios.get('http://localhost:3001/types');
+                const info = await axios.get("http://localhost:3001/types");
                         return dispatch({
                                 type: "GET_RECIPE_TYPE",
                                 payload: info.data,
@@ -81,7 +78,7 @@ import axios from "axios";
                 }
         }
 
-//Me traigo las para la creacion de una receta;
+//Me traigo la ruta para la creacion de una receta;
         export function postRecipe(payload){
                 return async function (dispatch){
                         const response = await axios.post('http://localhost:3001/recipe',payload)
@@ -89,14 +86,14 @@ import axios from "axios";
                 }
         }
 
-//Me traigo la ruta por id, para la parte del detalle;
+//Me traigo la ruta por id, para hacer el detalle;
         export function getDetail(id){
                 return async function(dispatch){
                         try{
-                                var detail = await axios.get('http://localhost:3001/recipes/'+id);
+                                const json = await axios.get('http://localhost:3001/recipes/' + id);
                                 return dispatch({
-                                        type: "GET_DETAIL",
-                                        payload: detail.data
+                                        type: "GET_DETAILS",
+                                        payload: json.data
                                 })
                         }catch(error){
                                 console.log(error);

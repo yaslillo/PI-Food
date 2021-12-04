@@ -10,17 +10,15 @@ const {API_KEY} = process.env;
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//el siguiente paso que me pide es desarrollar el Backend, las rutas, de las cuales me esta pidiendo que haga 4
-
-//Voy a determinar 3 constantes, 1 con los datos de la api, 2 con los datos de la base de datos y 3 una que los concatene a ambos
-
-//lo primero que hago es crear una constante que me traiga todos los datos de la api
+//creo una constante para guardar la información que me traigo de la api;
+//creo una constante para guardar los datos de la base de datos;
+//creo una constante para concatenar la información de ambas;
 const getApiInfo = async () =>{
         try{
                 const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
-               //le indico que me traiga los datos de la URL de la api
-                const apiInfo = await apiUrl.data.results.map(info => { //declaro una constante que me traiga la info que yo le solicito
-                        return { //solamente le pido que me traiga estos, mas las dietas
+
+                const apiInfo = await apiUrl.data.results.map(info => { 
+                        return { 
                                 name: info.title,
                                 resume: info.summary,
                                 score: info.spoonacularScore,
@@ -29,15 +27,15 @@ const getApiInfo = async () =>{
                                 image: info.image,
                                 id :info.id,
                                 diet: info.diets.map((diet) => diet),
-                            //aca pongo todos los datos que yo le pido que me traiga de la api, si quisiera algun otro, lo pongo aqui
+
                         }
                 })
-                        return apiInfo; //le pido que me retorne solo la informacion de la api que le pedi
+                        return apiInfo;
         }catch(err){
                 console.log(err);
         }
 }
-//segundo le pido que me traiga todos los datos de la base de datos
+//Pido la información a la base de datos;
 const getDbInfo = async () =>{
         return await Recipe.findAll({ 
                 include:{
@@ -46,8 +44,8 @@ const getDbInfo = async () =>{
                 }
         })
 }
-//tercero, concateno a los dos, los datos de la api y la base de datos en uno
-const getAllRecipie = async () => {
+//concateno la información de la api y la base de datos;
+const getAllRecipe = async () => {
         const apiInfo = await getApiInfo();
         const dbInfo = await getDbInfo();
         const dbInfoFilter = dbInfo.map(element =>{
@@ -69,42 +67,43 @@ const getAllRecipie = async () => {
         return allInfo;
 }
 
-//una vez declaradas las constantes de donde saco la informacion, voy a hacer las rutas que me pide 
 
-//NO TOCAR ANDA PERFECTA LA RUTA jaja
-//hago la primera ruta, que me traiga todas las recetas, las pido por query
+//Hago la ruta, que me trae todas las recetas, las pido por query;
+
         router.get('/recipes', async (req, res) => {
                 
-                const info = await getAllRecipie();
+                const info = await getAllRecipe();
                 const name = req.query.name;
                 if(!name){
                         return res.status(200).json(info);
-                } //le pido que me pase la receta que estoy buscando, que las pase todas a minusculas
-                const fillInfo= await info.filter(d => d.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
-                //si no encuentro esa informacion que me tire el mensaje de que no hay coincidencia alguna
-                fillInfo.length ? res.status(200).json(fillInfo) : res.status(404).send("There is no coincidence");
+                }
+                const filteredInfo= await info.filter(d => d.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+
+                filteredInfo.length ? res.status(200).json(filteredInfo) : res.status(404).send("No hay coincidencias con la busqueda");
         
         })
 
-        //NO TOCAR RUTA ANDA PERFECTA
-        //creo una ruta que me traiga los datos del id
-        //lo que yo quiero es poner el numero de id y que traiga esa sola receta, si no existe que me muestre el msj adecuado
+
+//Hago la ruta para buscar por id;
+
         router.get('/recipes/:id', async (req, res) =>{
-                const id = req.params.id; //la hago utilizando params
-                const allRecipe = await getAllRecipie();
+                const id = req.params.id; 
+                const allRecipe = await getAllRecipe();
                 if(id){
-                const fillRecipe = await allRecipe.filter(element => element.id.toString() === id);
-                fillRecipe.length ? res.status(200).json(fillRecipe) : res.status(404).send("Recipe doesn't exist");
+                const recipeId = await allRecipe.filter((element) => element.id == id);
+                recipeId.length ? res.status(200).json(recipeId) : res.status(404).send("Receta no existe");
                 }
                 
-})
+});
+
+//Hago la ruta para los tipos de dieta;
         router.get('/types', async(req,res) => {
                 const dataDb = await Diet.findAll()
                 res.send(dataDb)
         })
 
-//la ruta del post es para crear una nueva receta
-// y por ultimo hago una ruta para crear una nueva receta
+
+//Hago la ruta para crear una nueva receta;
 router.post('/recipe', async (req, res) => {
                 try{
                 const{
@@ -115,7 +114,7 @@ router.post('/recipe', async (req, res) => {
                                 healthylevel,
                                 image,
                                 diet,
-                        } = req.body; //recolecto todos los datos del body
+                        } = req.body;
                 let dietDb = await Diet.findAll({
                         where : {
                         name:diet
@@ -129,7 +128,8 @@ router.post('/recipe', async (req, res) => {
                         healthylevel,
                         image,
                         diet,
-                }) //los creo en la base de datos
+                }) 
+// Guardo las recetas creadas en la base de datos.
 
                         newRecipe.addDiet(dietDb);
                         res.status(200).send(newRecipe);

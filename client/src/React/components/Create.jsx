@@ -64,7 +64,7 @@ if(name === undefined || name.length < 3) {
     })
 }else if(image === undefined){
     return alert('Imagen invalida')
-}else if (diet === undefined){
+}else if (diet === undefined ){
     return alert('No se eligió dieta')
 }
 

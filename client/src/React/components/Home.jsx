@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCreated } from '../../redux/Action/index';
 import {Link} from 'react-router-dom';
 import Card from './Card';
-import Paginado from './Paginado';
+import Paginado from './Paginated';
 import SearchBar from "./SearchBar";
 
 export default function Home (){

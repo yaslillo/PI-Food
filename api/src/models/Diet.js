@@ -2,7 +2,7 @@
 
         module.exports = sequelize => {
                 sequelize.define('diet', {
-//en este caso hago exactamente lo mismo que el otro modelo con la diferencia que solo me pide que le pase dos datos
+
                     id:{
                         type: DataTypes.UUID,
                         allowNull: false,
