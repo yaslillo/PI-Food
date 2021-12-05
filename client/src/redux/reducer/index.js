@@ -17,7 +17,7 @@
                 } 
 //Filtro que ordena por puntuación de receta ascendente y descendente;(score)
                 case "ORDER_BY_SCORE":
-                let orderScore = action.payload === "asc" ? 
+                const orderScore = action.payload === "asc" ? 
                 state.recipes.sort(function (a,b){
                         if(a.score > b.score){
                                 return 1;
@@ -42,7 +42,7 @@
                 }
 //Filtro que ordena las recetas por orden alfabetico;
                 case 'ORDER_BY_ALPHA':
-                        let orderAlph = action.payload === 'A-Z' ? state.allRecipes.sort(function (a, b) {
+                        const orderAlph = action.payload === 'A-Z' ? state.allRecipes.sort(function (a, b) {
                                 if (a.name.toLowerCase() > b.name.toLowerCase()) {
                                                 return 1;
                                 };
@@ -76,15 +76,15 @@
                         })
                         console.log('entra aca')
                         allRecipes.forEach(e => {
-                        if (e.hasOwnProperty('Diet') && e.Diet.map(c => c.name === action.payload)) {
+                        if (e.hasOwnProperty('Diet') && e.Diet.map(el => el.name === action.payload)) {
                                 dietsDb.push(e)
                         }
                         })
-                        const find = dietsApi.concat(dietsDb)
-                        if (find.length) {
+                        const dietMatch = dietsApi.concat(dietsDb)
+                        if (dietMatch.length) {
                         return {
                                 ...state,
-                                recipes: find
+                                recipes: dietMatch
                         }
                         };
                         break;
@@ -120,13 +120,7 @@
                                 return{
                                         ...state,
                                 }
-//Hago un caso para traer el detalle;
 
-                case "GET_DETAILS":
-                                return{
-                                        ...state,
-                                        detail : action.payload,
-                                }
                 
                 
                 default:

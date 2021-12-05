@@ -1,0 +1,67 @@
+.body{
+        background-image: url("../images/bkgHome.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+.btnCreate {
+        border: solid 2px transparent;
+        border-color: rgb(0, 0, 0);
+        border-width: 0.5px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        padding: 0;
+        height: 25px;
+        background-color: transparent;
+        transition: background-color 0.25s, color 0.25s;
+        cursor: pointer;
+        color: rgb(0, 0, 0);
+        font-size: 1rem;
+        }
+
+.btnCreate:hover {
+        background-color: #572c03ab;
+        color: rgb(211, 194, 102);
+        }
+
+.linkCreate {
+        text-decoration: none;
+        }
+
+.select {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        }
+
+    
+.btnPag {
+        margin-bottom: 20px;
+        }
+
+.btnPag button {
+        background-color: rgb(121, 123, 126);
+        border-color: rgb(197, 177, 65);
+        }
+
+.btnPag button:hover {
+        background-color: rgb(197, 183, 104);
+        color: rgb(46, 43, 24);
+        }
+.cards {
+        margin-left: 7%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 60px;
+        }
+.linkCard {
+        text-decoration: none;
+        }
+

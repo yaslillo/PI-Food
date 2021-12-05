@@ -1,9 +1,9 @@
 import './App.css';
-import LandingPage from './React/components/LandingPage';
+import LandingPage from './components/LandingPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './React/components/Home';
-import Details from './React/components/Details';
-import Create from './React/components/Create'
+import Home from './components/Home';
+import Details from './components/Details';
+import Create from './components/Create'
 
 
 

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCreated } from '../../redux/Action/index';
+import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCreated } from '../../src/redux/Action/index';
 import {Link} from 'react-router-dom';
 import Card from './Card';
 import Paginado from './Paginated';
 import SearchBar from "./SearchBar";
+import './Home.css';
 
 export default function Home (){
 const dispatch = useDispatch()
@@ -65,23 +66,22 @@ function handleFilterCreated(e) {
 //------------------------------------------------------------------------------------//
     return(
         <div>
-            <Link to='/recipe'>Crear Receta</Link>
             <h1>LAS MEJORES RECETAS</h1> 
-            {/* <button onClick={e => { handlerClick (e)}}>
-                volver a cargar recetas
-                </button> */}
-            <div>
-                <select onChange={e => handleOrderByScore(e)}>
+            <Link to='/recipe/' className="linkCreate" >
+                <button className="btnCreate">Crear Receta</button>
+                </Link>
+                <div classname="select"/>
+                <select className="btnCreate" onChange={e => handleOrderByScore(e)}>
                     <option value="all">Orden por puntuación</option>
                     <option value="asc">Puntuación Asc</option>
                     <option value="desc">Puntuación Desc</option>
                 </select> 
-                <select onChange={e => handleOrderByAlpha(e)}>
+                <select className="btnCreate" onChange={e => handleOrderByAlpha(e)}>
                     <option value="all">Orden Alfabetico</option>
                     <option value="A-Z">Orden de A - Z</option>
                     <option value="Z-A">Orden de Z - A</option>
                 </select> 
-                <select onChange={e => handleSetFilterByDiets(e)}>
+                <select className="btnCreate"onChange={e => handleSetFilterByDiets(e)}>
                     <option value="all"> Tipo de dieta</option>
                     <option value="gluten free">Gluten Free</option>
                     <option value="dairy free">Dairy Free</option>
@@ -93,7 +93,7 @@ function handleFilterCreated(e) {
                     <option value="fodmap friendly">Fodmap Friendly</option>
                     <option value="whole 30">Whole 30</option>
                 </select>
-                <select onChange={e => handleFilterCreated(e)}>
+                <select className="btnCreate" onChange={e => handleFilterCreated(e)}>
                     <option value="All"> Todos</option>
                     <option value="created">Creados</option>
                     <option value="api">Existentes</option>
@@ -104,12 +104,14 @@ function handleFilterCreated(e) {
                 allRecipes={ allRecipes.length}
                 paginado={paginado}
                 />
+                <div>
                 { currentRecipes?.map((el) => {
                     return(
                         <div>
-                        
-                        <Card name={el.name} image={el.image} diet={el.diet} id={el.id}/>
-                
+
+                            <Link to={`/${el.id}`}>
+                                <Card key={el.id} id={el.id} name={el.name} image={el.image} diet={el.diet}/>
+                            </Link>
                         </div>
                     );
                 })}

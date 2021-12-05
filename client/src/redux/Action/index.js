@@ -9,10 +9,10 @@ import axios from "axios";
 
         export function getRecipes(){
                 return async function(dispatch) {
-                var json = await axios.get("http://localhost:3001/recipes");
+                const info = await axios.get("http://localhost:3001/recipes");
                 return dispatch({
                         type: "GET_RECIPES",
-                        payload: json.data
+                        payload: info.data
                 })
                 }
         }
@@ -55,10 +55,10 @@ import axios from "axios";
         export function getNameRecipes(name){ 
                 return async function(dispatch){ 
                         try{ 
-                                var json = await axios.get("http://localhost:3001/recipes?name=" + name);
+                                const info = await axios.get("http://localhost:3001/recipes?name=" + name);
                                 return dispatch({
                                         type: "GET_NAME_RECIPE",
-                                        payload: json.data
+                                        payload: info.data
                                 })
                         }catch(error){
                         console.log(error);
@@ -81,22 +81,8 @@ import axios from "axios";
 //Me traigo la ruta para la creacion de una receta;
         export function postRecipe(payload){
                 return async function (dispatch){
-                        const response = await axios.post('http://localhost:3001/recipe',payload)
-                        return response;
+                        const info = await axios.post('http://localhost:3001/recipe',payload)
+                        return info;
                 }
         }
 
-//Me traigo la ruta por id, para hacer el detalle;
-        export function getDetail(id){
-                return async function(dispatch){
-                        try{
-                                const json = await axios.get('http://localhost:3001/recipes/' + id);
-                                return dispatch({
-                                        type: "GET_DETAILS",
-                                        payload: json.data
-                                })
-                        }catch(error){
-                                console.log(error);
-                        }
-                }
-        }
