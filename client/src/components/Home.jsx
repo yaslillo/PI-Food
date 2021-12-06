@@ -66,11 +66,11 @@ function handleFilterCreated(e) {
 //------------------------------------------------------------------------------------//
     return(
         <div>
-            <h1>LAS MEJORES RECETAS</h1> 
-            <Link to='/recipe/' className="linkCreate" >
-                <button className="btnCreate">Crear Receta</button>
+            <h1 className="text">LAS MEJORES RECETAS</h1> 
+            <Link to='/recipe/'className="linkCreate">
+                <button className="button">Crear Receta</button>
                 </Link>
-                <div classname="select"/>
+                <div className="searhButton">
                 <select className="btnCreate" onChange={e => handleOrderByScore(e)}>
                     <option value="all">Orden por puntuación</option>
                     <option value="asc">Puntuación Asc</option>
@@ -98,13 +98,14 @@ function handleFilterCreated(e) {
                     <option value="created">Creados</option>
                     <option value="api">Existentes</option>
                 </select>
+                </div>
                 <SearchBar/>
                 <Paginado
                 recipesPerPage= {recipesPerPage}
                 allRecipes={ allRecipes.length}
                 paginado={paginado}
                 />
-                <div>
+                <div className="card">
                 { currentRecipes?.map((el) => {
                     return(
                         <div>
@@ -120,8 +121,6 @@ function handleFilterCreated(e) {
                 allRecipes={ allRecipes.length}
                 paginado={paginado}
                 />
-                
-                
             </div>
         </div>
     )

@@ -1,11 +1,11 @@
 input{
     border-radius: 28px;
-    text-shadow: 3px 2px 1px #9daef5;
+    text-shadow: 3px 2px 1px #80816c;
     box-shadow: 6px 5px 24px #666666;
     font-family: cursive;
     font-style: oblique;
     font-size: 1em;
-    color: #fafafa;
+    color: hsl(0, 14%, 89%);
     padding: 4px;
     right: 300px;
     top: 250px;
@@ -20,3 +20,4 @@ input:hover{
     background-image: linear-gradient(to bottom, rgb(119, 119, 119), #121313);
     font-weight:bold;
     }
+

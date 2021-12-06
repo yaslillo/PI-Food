@@ -1,20 +1,24 @@
 .cardComp {
 
-            border: 1px solid rgb(230, 226, 204);
+            border: 1px solid rgb(32, 32, 31);
             background-image: url("../images/bkgCard.jpg");
             background-position: absolute;
             background: cover;
             box-shadow: 2px 2px 2px rgb(223, 208, 124);
             color: #444;
-            display: inline-block;
-            margin: 5%;
+            line-height: 1.5;
+            display: flex;
+            margin: 3%;
             padding: 1em;
             vertical-align: top;
-            width: 33, 5%;
+            justify-content: center;
+            border-radius: 0.5rem;
+
+
         }
         
 .cardComp h3 {
-
+            float: inline-start;
             display: flex;
             text-align: center;
             width: 250px;
@@ -27,25 +31,19 @@
 
             text-decoration: underline darkslategrey;
             color: rgb(69, 70, 63);
-            text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
+            text-shadow:rgb(223, 208, 124) -0.5px 0.5px;
         }
 .cardComp img {
-
+            float:center;
             display: flex;
-            margin-left: 20%;
+            margin-left:20%;
         }
         
 .cardComp img:hover {
 
             border: 2px outset rgba(119, 98, 28, 0.8);
         }
-.elegirDieta {
 
-            color: rgb(223, 208, 124);
-            text-decoration: underline;
-            margin-bottom: 7px;
-            margin-top: 9px;
-        }
 .score {
 
             color: rgb(223, 208, 124);

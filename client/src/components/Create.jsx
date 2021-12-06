@@ -148,12 +148,15 @@ useEffect(() => {
                                 ))}
                             </select>
                             <ul><li>{input.diet.map(el => el + " ,")}</li></ul>
+                            <div className="content">
                             <button className="btnCreate" type='submit'>Crear Receta</button>
+                            </div>
                         </div>
+                            <Link  to='/home'><button className="btnCreate">Volver</button></Link>
                 </div>
             </form>
         </div>
     )
 }
 
-<Link  to='/home'><button className="btnCreate">Volver</button></Link>
+// <Link  to='/home'><button className="btnCreate">Volver</button></Link>

@@ -28,7 +28,7 @@ function handleSubmit(e){
                 onChange={(e) => handleInputChange(e)}
                 />
                 <button type='submit' onClick={(e) => handleSubmit(e)} className="btn">
-                    <span className="btnCreate">Buscar</span>
+                    <span className="input">Buscar</span>
                 </button>
             </div>
         )

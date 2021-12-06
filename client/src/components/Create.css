@@ -1,15 +1,15 @@
 .cardContainer {
 
     border: 1px solid rgb(230, 226, 204);
-    background-image: url("../images/lettuce-background.jpg");
+    background-image: url("../images/bkgCocina.jpg");
     background-position: absolute;
     background: cover;
     box-shadow: 2px 2px 2px rgb(223, 208, 124);
     color: rgb(8, 8, 8);
     display: inline-block;
-    margin: 2%;
-    padding: 1em;
-    vertical-align: top;
+    margin: 10%;
+    padding: 2em;
+    vertical-align: center;
     width: 33, 5%;
 }
 
@@ -20,7 +20,7 @@
     width: 250px;
     margin-top: 5px;
     color: rgb(223, 208, 124);
-    text-shadow: rgb(8, 8, 8) -1px 1px;
+    text-shadow: rgb(8, 8, 8) -2px 2px;
 }
 
 .cardContainer h3:hover {
@@ -50,4 +50,10 @@
 
     color: rgb(223, 208, 124);
     float: right;
+}
+
+.content {
+    text-align: center;
+    display:flex;
+    align-items: center;
 }

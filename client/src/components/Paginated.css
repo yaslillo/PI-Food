@@ -2,29 +2,11 @@
 	margin:20px 0;
 }
 
-.btnPag ul {
-	list-style:none;
-	text-align: center;
+.btnPag  a:hover {
+	background:rgb(238, 214, 80)
 }
 
-.btnPag ul li {
-	display:inline-block;
-	margin-right:2px;
-}
-.btnPag ul li a {
-	display:block;
-	padding:10px 10px;
-	color:#fff;
-	background-image: linear-gradient(to bottom, rgb(119, 119, 119), #121313) ;
-	text-decoration: none;
-    border-radius: 28px;
-}
-
-.btnPag ul li a:hover {
-	background:rgb(85, 130, 253)
-}
-
-.btnPag ul li .active {
-	background:lightskyblue;
+.btnPag  .active {
+	background:rgb(241, 245, 12);
 	font-weight:bold;
-}
+} 

@@ -1,46 +1,23 @@
-.body{
+body{
         background-image: url("../images/bkgHome.jpg");
         background-size: cover;
         background-attachment: fixed;
-    }
-    
-.btnCreate {
-        border: solid 2px transparent;
-        border-color: rgb(0, 0, 0);
-        border-width: 0.5px;
-        border-radius: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 150px;
-        padding: 0;
-        height: 25px;
-        background-color: transparent;
-        transition: background-color 0.25s, color 0.25s;
-        cursor: pointer;
-        color: rgb(0, 0, 0);
-        font-size: 1rem;
-        }
-
+        text-align: center;
+}
+/* 
 .btnCreate:hover {
         background-color: #572c03ab;
         color: rgb(211, 194, 102);
-        }
+        position: absolute;
+        } */
 
 .linkCreate {
         text-decoration: none;
+        font-size: 60px;
+        display: block;
+        text-align: center;
         }
 
-.select {
-        display: flex;
-        justify-content: center;
-        padding: 5px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        }
-
-    
 .btnPag {
         margin-bottom: 20px;
         }
@@ -54,6 +31,7 @@
         background-color: rgb(197, 183, 104);
         color: rgb(46, 43, 24);
         }
+
 .cards {
         margin-left: 7%;
         display: grid;
@@ -61,7 +39,41 @@
         gap: 10px;
         margin-bottom: 60px;
         }
+
 .linkCard {
         text-decoration: none;
+        }
+
+.text  {
+        font-size: 60px;
+        text-align: center;
+}
+
+.card {
+        display: flex;
+        flex-wrap: wrap;
+        width: 70%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.button {
+        position: relative;
+        bottom: 30 px;
+        right: -1050;
+        background-color: rgb(121, 123, 126);
+        border-color: rgb(197, 177, 65);
+        }
+
+.btnCreate{
+        text-align: center;
+        background-color: rgb(121, 123, 126);
+        border-color: rgb(197, 177, 65);
+} 
+
+.button:hover {
+        background-color: rgb(197, 183, 104);
+        color: rgb(46, 43, 24);
         }
 
