@@ -70,7 +70,7 @@ function handleFilterCreated(e) {
             <Link to='/recipe/'className="linkCreate">
                 <button className="button">Crear Receta</button>
                 </Link>
-                <div className="searhButton">
+                <div>
                 <select className="btnCreate" onChange={e => handleOrderByScore(e)}>
                     <option value="all">Orden por puntuación</option>
                     <option value="asc">Puntuación Asc</option>

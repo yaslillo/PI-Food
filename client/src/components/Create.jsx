@@ -158,5 +158,3 @@ useEffect(() => {
         </div>
     )
 }
-
-// <Link  to='/home'><button className="btnCreate">Volver</button></Link>

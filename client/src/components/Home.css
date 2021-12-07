@@ -4,19 +4,19 @@ body{
         background-attachment: fixed;
         text-align: center;
 }
-/* 
-.btnCreate:hover {
+
+/* .btnCreate:hover {
         background-color: #572c03ab;
         color: rgb(211, 194, 102);
         position: absolute;
-        } */
+        }  */
 
 .linkCreate {
         text-decoration: none;
         font-size: 60px;
         display: block;
         text-align: center;
-        }
+        } 
 
 .btnPag {
         margin-bottom: 20px;
@@ -28,8 +28,8 @@ body{
         }
 
 .btnPag button:hover {
-        background-color: rgb(197, 183, 104);
         color: rgb(46, 43, 24);
+        background-color: rgb(197, 183, 104);
         }
 
 .cards {
@@ -66,14 +66,15 @@ body{
         border-color: rgb(197, 177, 65);
         }
 
-.btnCreate{
+.btnCreate:hover{
         text-align: center;
         background-color: rgb(121, 123, 126);
         border-color: rgb(197, 177, 65);
+        color: rgb(197, 183, 104);
 } 
+
 
 .button:hover {
         background-color: rgb(197, 183, 104);
         color: rgb(46, 43, 24);
-        }
-
+        } 
