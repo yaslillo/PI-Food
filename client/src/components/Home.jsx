@@ -108,7 +108,7 @@ function handleFilterCreated(e) {
                 <div className="card">
                 { currentRecipes?.map((el) => {
                     return(
-                        <div>
+                        <div className="thumb">
 
                             <Link to={`/${el.id}`}>
                                 <Card key={el.id} id={el.id} name={el.name} image={el.image} diet={el.diet}/>
@@ -116,11 +116,13 @@ function handleFilterCreated(e) {
                         </div>
                     );
                 })}
+                <div>
                 <Paginado
                 recipesPerPage= {recipesPerPage}
                 allRecipes={ allRecipes.length}
                 paginado={paginado}
                 />
+                </div>
             </div>
         </div>
     )
