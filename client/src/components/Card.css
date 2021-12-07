@@ -1,51 +1,51 @@
 .cardComp {
 
-            border: 1px solid rgb(32, 32, 31);
-            background-image: url("../images/bkgCard.jpg");
-            background-position: absolute;
-            background: cover;
-            box-shadow: 2px 2px 2px rgb(223, 208, 124);
-            color: #444;
-            line-height: 1.5;
-            display: flex;
-            margin: 1em 0;
-            padding: 1em;
-            vertical-align: top;
-            justify-content: center;
-            border-radius: 0.5rem;
+    border: 1px solid rgb(32, 32, 31);
+    background-image: url("../images/bkgCard.jpg");
+    background-position: absolute;
+    background: cover;
+    box-shadow: 2px 2px 2px rgb(223, 208, 124);
+    color: #444;
+    line-height: 1.5;
+    display: flex;
+    margin: 1em 0;
+    padding: 1em;
+    vertical-align: top;
+    justify-content: center;
+    border-radius: 0.5rem;
 
 
-        }
-        
+}
+
 .cardComp h3 {
-            float: inline-start;
-            display: flex;
-            text-align: center;
-            width: 250px;
-            margin-top: 5px;
-            color: rgb(223, 208, 124);
-            text-shadow: rgb(19, 19, 18) -1px 1px;
-        }
-        
+    float: inline-start;
+    display: flex;
+    text-align: center;
+    width: 250px;
+    margin-top: 5px;
+    color: rgb(223, 208, 124);
+    text-shadow: rgb(19, 19, 18) -1px 1px;
+}
+
 .cardComp h3:hover {
 
-            text-decoration: underline darkslategrey;
-            color: rgb(69, 70, 63);
-            text-shadow:rgb(223, 208, 124) -0.5px 0.5px;
-        }
+    text-decoration: underline darkslategrey;
+    color: rgb(69, 70, 63);
+    text-shadow:rgb(223, 208, 124) -0.5px 0.5px;
+}
 .cardComp img {
-            float:center;
-            display: flex;
-            margin-left:20%;
-        }
-        
+    float:center;
+    display: flex;
+    margin-left:20%;
+}
+
 .cardComp img:hover {
 
-            border: 2px outset rgba(119, 98, 28, 0.8);
-        }
+    border: 2px outset rgba(119, 98, 28, 0.8);
+}
 
 .score {
 
-            color: rgb(223, 208, 124);
-            float: right;
-        }
+    color: rgb(223, 208, 124);
+    float: right;
+}
