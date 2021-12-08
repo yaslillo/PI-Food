@@ -38,7 +38,7 @@ function handleSelect(e){
     console.log(input.diet)
 }
 
-//Función para disparar la acción de la receta creada---------------------//
+//Función para disparar la acción de la receta creada, previa validación---------------------//
 function handleSubmit(e){
     e.preventDefault();
 const {name,resume,score,stepbystep,healthylevel,image,diet} = input;
@@ -49,7 +49,7 @@ if(name === undefined || name.length < 3) {
 }else if (resume === undefined || resume.length < 5){
     return alert ('Resumen invalido');
 
-}else if (score === undefined || score < 10){
+}else if (score === undefined || score < 10 || score > 100){
 
     setInput({
         ...input,
@@ -66,7 +66,7 @@ if(name === undefined || name.length < 3) {
 }else if(image === undefined){
     return alert('Imagen invalida')
 }else if (diet === undefined ){
-    return alert('No se eligió dieta')
+    return alert('Elegir dieta')
 }
 
 dispatch(postRecipe(input));

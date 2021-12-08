@@ -1,15 +1,10 @@
 body{
-        background-image: url("../images/bkgHome.jpg");
+        background-image: url("../images/bkgCreate.jpg");
         background-size: cover;
         background-attachment: fixed;
         text-align: center;
-}
 
-/* .btnCreate:hover {
-        background-color: #572c03ab;
-        color: rgb(211, 194, 102);
-        position: absolute;
-        }  */
+}
 
 .linkCreate {
         text-decoration: none;
@@ -79,5 +74,3 @@ body{
         background-color: rgb(197, 183, 104);
         color: rgb(46, 43, 24);
         } 
-
-

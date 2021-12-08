@@ -11,7 +11,7 @@ export default function Card ({name,image,score,diet,id}) {
             <h3>{ name }</h3>
             <h3>{ diet }</h3>
             <h3>{score}</h3>
-            <img src={image} alt="img not found" width="150px" height="200"/>
+            <img src={image} alt="img not found" width="200px" height="250"/>
             </Link>
         </div>
 )
