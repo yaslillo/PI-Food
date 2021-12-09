@@ -6,6 +6,7 @@ describe('Recipe model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
+    
   describe('Validators', () => {
     beforeEach(() => Recipe.sync({ force: true }));
     describe('name', () => {
@@ -14,34 +15,66 @@ describe('Recipe model', () => {
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
       });
-      it('should work when its a valid id', () => {
-        Recipe.create({ id: 'Milanesa a la napolitana' });
-      });
+    });
+  });
 
-      it('should work when its a valid name', () => {
-        Recipe.create({ name: 'Milanesa a la napolitana' });
-      });
+  describe('id', () => {
+    it('should throw an error if id is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid id')))
+        .catch(() => done());
+    });
+  });
 
-      it(' should work when there is resume', () => {
-        Recipe.create({ resume: 'Milanesa a la napolitana' });
-      });
+  describe('resume', () => {
+    it('should throw an error if resume is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid resume')))
+        .catch(() => done());
+    });
+  });
 
-      it('should work when is score', () => {
-        Recipe.create({ score: 'Milanesa a la napolitana' });
-      });
+  describe('score', () => {
+    it('should throw an error if score is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid score')))
+        .catch(() => done());
+    });
+  });
 
-      it('should work when is helthylevel', () => {
-        Recipe.create({ healthylevel: 'Milanesa a la napolitana' });
-      });
-      it('should work when is stepbystep', () => {
-        Recipe.create({stepbystep: 'Milanesa a la napolitana' });
-      });
-      it('should work when its a valid image', () => {
-        Recipe.create({image: 'Milanesa a la napolitana' });
-      });
-      it('should work when its a valid createdInDb', () => {
-        Recipe.create({createdInDb: 'Milanesa a la napolitana' });
-      });
+  describe('healthylevel', () => {
+    it('should throw an error if healthylevel is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid healthylevel')))
+        .catch(() => done());
+    });
+  });
+
+
+  describe('stepbystep', () => {
+    it('should throw an error if stepbystep is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid stepbystep')))
+        .catch(() => done());
+    });
+  });
+
+  describe('image', () => {
+    it('should throw an error if image is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid image')))
+        .catch(() => done());
+    });
+  });
+
+  describe('createdInDb', () => {
+    it('should throw an error if createdInDb is null', (done) => {
+      Recipe.create({})
+        .then(() => done(new Error('It requires a valid createdInDb')))
+        .catch(() => done());
     });
   });
 });
+
+
+
