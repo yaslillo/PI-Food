@@ -119,6 +119,11 @@ function handleFilterCreated(e) {
                     );
                 })}
             </div>
+            <Paginado
+                recipesPerPage= {recipesPerPage}
+                allRecipes={ allRecipes.length}
+                paginado={paginado}
+                />
         </div>
     )
 }
