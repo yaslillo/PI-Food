@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCreated } from '../../src/redux/Action/index';
+import {getRecipes, orderByScore, orderByAlphabetics, setFilterByDiets,filterCreated, getRecipeType } from '../../src/redux/Action/index';
 import {Link} from 'react-router-dom';
 import Card from './Card';
 import Paginado from './Paginated';
@@ -11,15 +11,16 @@ import './Home.css';
 export default function Home (){
 const dispatch = useDispatch()
 const allRecipes = useSelector((state) => state.recipes)
+const allDiets = useSelector((state) => state.types)
 
 //Paginado.-----------------------------------------------------------------------//
 const [currentPage, setCurrentPage] = useState(1);
-const [recipesPerPage, setRecipesPerPage] = useState(9);
-const [order, setOrder] = useState('');
+const [recipesPerPage] = useState(9);
+const [, setOrder] = useState('');
 const indexOfLastRecipes = currentPage * recipesPerPage;
 const indexOfFirstRecipes = indexOfLastRecipes - recipesPerPage;
 const currentRecipes = allRecipes.slice(indexOfFirstRecipes,indexOfLastRecipes);
-
+console.log(allDiets)
 
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
@@ -30,6 +31,10 @@ useEffect(() =>{
     dispatch(getRecipes());
 },[dispatch])
 
+
+useEffect(() =>{
+    dispatch( getRecipeType())
+},[dispatch])
 
 
 //Filtro por puntuación.-----------------------------------------------------------//
@@ -70,7 +75,7 @@ function handleFilterCreated(e) {
             <Link to='/recipe/'className="linkCreate">
                 <button className="button">Crear Receta</button>
                 </Link>
-                <div>
+                <div className="style">
                 <select className="btnCreate" onChange={e => handleOrderByScore(e)}>
                     <option value="all">Orden por puntuación</option>
                     <option value="asc">Puntuación Asc</option>
@@ -82,16 +87,13 @@ function handleFilterCreated(e) {
                     <option value="Z-A">Orden de Z - A</option>
                 </select> 
                 <select className="btnCreate"onChange={e => handleSetFilterByDiets(e)}>
-                    <option value="all"> Tipo de dieta</option>
-                    <option value="gluten free">Gluten Free</option>
-                    <option value="dairy free">Dairy Free</option>
-                    <option value="lacto ovo vegetarian">Lacto ovo Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="paleolithic">Paleolithic</option>
-                    <option value="primal">Primal</option>
-                    <option value="pescatarian">Pescatarian</option>
-                    <option value="fodmap friendly">Fodmap Friendly</option>
-                    <option value="whole 30">Whole 30</option>
+                    {
+                        allDiets?.map(el => {
+                            return(
+                                <option value={el.name}>{el.name}</option>
+                            )
+                        })
+                    }
                 </select>
                 <select className="btnCreate" onChange={e => handleFilterCreated(e)}>
                     <option value="All"> Todos</option>
@@ -116,13 +118,6 @@ function handleFilterCreated(e) {
                         </div>
                     );
                 })}
-                <div>
-                <Paginado
-                recipesPerPage= {recipesPerPage}
-                allRecipes={ allRecipes.length}
-                paginado={paginado}
-                />
-                </div>
             </div>
         </div>
     )

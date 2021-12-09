@@ -1,3 +1,8 @@
+.inputstyle{
+    padding:1%;
+}
+
+
 input{
     border-radius: 28px;
     text-shadow: 3px 2px 1px #80816c;
@@ -6,13 +11,13 @@ input{
     font-style: oblique;
     font-size: 1em;
     color: hsl(0, 14%, 89%);
-    padding: 4px;
     right: 300px;
     top: 250px;
     position: unset;
     border-left-width: medium;
     background: local;
     border: ridge;
+    padding: 0.9%;
     
     }
 
@@ -20,4 +25,6 @@ input:hover{
     background-image: linear-gradient(to bottom, rgb(119, 119, 119), #121313);
     font-weight:bold;
     }
+
+
 

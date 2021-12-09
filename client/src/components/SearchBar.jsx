@@ -20,7 +20,7 @@ function handleSubmit(e){
     dispatch(getNameRecipes(name))
 }
         return(
-            <div>
+            <div className="inputstyle">
                 <input 
                 className="input"
                 type= 'text'
