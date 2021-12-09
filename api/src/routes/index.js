@@ -115,6 +115,7 @@ router.post('/recipe', async (req, res) => {
                                 image,
                                 diet,
                         } = req.body;
+
                 let dietDb = await Diet.findAll({
                         where : {
                         name:diet
@@ -138,6 +139,16 @@ router.post('/recipe', async (req, res) => {
                         }
                 })
 
+//router.get('/home', (req,res,next) =>{
+                // axios.get('urlapi')
+                // .then (res=>{
+                // return  res.status(200).json(allData)
+                
+                // })
+                // .catch(err => {
+                // console.log(err)
+                // })
+                // })
 
 
 
