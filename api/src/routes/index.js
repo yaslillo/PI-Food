@@ -36,7 +36,7 @@ const getApiInfo = async () =>{
         }
 }
 //Pido la información a la base de datos;
-const getDbInfo = async () =>{
+const getDbInfo = async () =>{              
         return await Recipe.findAll({ 
                 include:{
                         model : Diet
@@ -96,7 +96,7 @@ const getAllRecipe = async () => {
                 
 });
 
-//Hago la ruta para los tipos de dieta;
+//Hago la ruta para los tipos de dieta;             
         router.get('/types', async(req,res) => {
                 const dataDb = await Diet.findAll()
                 res.send(dataDb)
