@@ -21,10 +21,10 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
-server.use(express.static(path.resolve(__dirname, '../../client/build')));
+server.use(express.static(path.resolve(__dirname, '../client/build')));
 server.use('/', routes);
 server.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 })
 
 //Error catching endware.
