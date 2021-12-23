@@ -9,7 +9,7 @@ import axios from "axios";
 
         export function getRecipes(){
                 return async function(dispatch) {
-                const info = await axios.get("http://localhost:3001/recipes");
+                const info = await axios.get("/recipes");
                 return dispatch({
                         type: "GET_RECIPES",
                         payload: info.data
@@ -55,7 +55,7 @@ import axios from "axios";
         export function getNameRecipes(name){ 
                 return async function(dispatch){ 
                         try{ 
-                                const info = await axios.get("http://localhost:3001/recipes?name=" + name);
+                                const info = await axios.get("/recipes?name=" + name);
                                 return dispatch({
                                         type: "GET_NAME_RECIPE",
                                         payload: info.data
@@ -70,7 +70,7 @@ import axios from "axios";
 
         export function getRecipeType(){
                 return async function (dispatch){
-                const info = await axios.get("http://localhost:3001/types");
+                const info = await axios.get("/types");
                         return dispatch({
                                 type: "GET_RECIPE_TYPE",
                                 payload: info.data,
@@ -81,7 +81,7 @@ import axios from "axios";
 //Me traigo la ruta para la creacion de una receta;
         export function postRecipe(payload){
                 return async function (dispatch){
-                        const info = await axios.post('http://localhost:3001/recipe',payload)
+                        const info = await axios.post('/recipe',payload)
                         return info;
                 }
         }

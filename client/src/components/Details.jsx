@@ -9,7 +9,7 @@ const [detail,setDetail]=useState(null)
     const {id} = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:3001/recipes/' + id)
+        axios.get('/recipes/' + id)
         .then((info) => {
             setDetail(info.data)
         })

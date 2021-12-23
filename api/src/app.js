@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index');
+const path = require('path');
 const axios = require('axios')
 require('./db');
 
@@ -20,8 +21,11 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
-
+server.use(express.static(path.resolve(__dirname, '../../client/build')));
 server.use('/', routes);
+server.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'));
+})
 
 //Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
