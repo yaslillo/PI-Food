@@ -15,7 +15,7 @@ const allDiets = useSelector((state) => state.types)
 
 //Paginado.-----------------------------------------------------------------------//
 const [currentPage, setCurrentPage] = useState(1);
-const [recipesPerPage] = useState(9);
+const [recipesPerPage] = useState(8);
 const [, setOrder] = useState('');
 const indexOfLastRecipes = currentPage * recipesPerPage;
 const indexOfFirstRecipes = indexOfLastRecipes - recipesPerPage;

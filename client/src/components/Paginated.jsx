@@ -20,7 +20,7 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
             pageNumbers.map(number => (
 
                 <Link to='/home'>
-                    <button key={number} onClick={() => paginado(number)}  >{number}</button>
+                    <button key={number} onClick={() => paginado(number)}>{number}</button>
                 </Link>
             ))
 

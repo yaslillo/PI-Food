@@ -1,30 +1,56 @@
 .inputstyle{
     padding:1%;
+    
 }
 
 
 input{
-    border-radius: 28px;
-    text-shadow: 3px 2px 1px #80816c;
-    box-shadow: 6px 5px 24px #666666;
-    font-family: cursive;
-    font-style: oblique;
-    font-size: 1em;
-    color: hsl(0, 14%, 89%);
-    right: 300px;
-    top: 250px;
-    position: unset;
-    border-left-width: medium;
-    background: local;
     border: ridge;
-    padding: 0.9%;
-    
+    padding: 0.4%;
+    position: relative;
+    bottom: 30 px;
+    right: -1050;
+    background-color: rgb(121, 123, 126);
+    border-color: rgb(197, 177, 65);
+    box-shadow:6px 6px 6px rgb(223, 208, 124);
+    font-size: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 3px 2px 1px rgb(197, 177, 65);
+    border-radius: 3px;
     }
 
 input:hover{
     background-image: linear-gradient(to bottom, rgb(119, 119, 119), #121313);
     font-weight:bold;
+    
     }
+
+button.btnSearch{
+        padding:0.5%;
+        background-color: rgb(121, 123, 125);
+        color: rgb(197, 183, 104);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
+
+}
+
+button.btnSearch:hover{
+    text-align: center;
+    background-color: rgb(121, 123, 126);
+    border-color: rgb(197, 177, 65);
+    color: rgb(197, 183, 104);
+    box-shadow:6px 6px 6px rgb(223, 208, 124);
+    }
+
+button.btnSearch {
+        position: relative;
+        bottom: 30 px;
+        right: -1050;
+        background-color: rgb(121, 123, 126);
+        border-color: rgb(197, 177, 65);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        }
+
+
 
 
 

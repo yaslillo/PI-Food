@@ -20,7 +20,7 @@ const [detail,setDetail]=useState(null)
 
 
     return (                                        
-        <div className="cardContainer">
+        <div className="cardDetails">
             { 
                     detail ? 
                     <div>
@@ -36,7 +36,7 @@ const [detail,setDetail]=useState(null)
             } 
             <div>
                             <Link to={'/home'}>
-                                <button>Volver</button>
+                                <button className="btnCreate">Volver</button>
                             </Link>
                             </div>
         </div>                                      

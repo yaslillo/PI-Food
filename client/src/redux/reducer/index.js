@@ -63,6 +63,7 @@
                                 ...state,
                                 recipes: orderAlph
                         }
+                        
                 
 //Filtro que ordena por tipo de dieta;
                         case "FILTER_BY_DIET_TYPES":

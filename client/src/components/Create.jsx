@@ -89,7 +89,7 @@ useEffect(() => {
 },[dispatch]);
 
     return (
-        <div className="cardContainer">
+        <div className="cardcontainer">
             <h1 >Crea tu receta</h1>
             <form onSubmit={(e) =>handleSubmit(e)}>
                 <div>
@@ -142,7 +142,7 @@ useEffect(() => {
                 </div>
                 <div>
                         <div>
-                            <select onChange={(e) => handleSelect(e)}>
+                            <select className="btnCreate" onChange={(e) => handleSelect(e)}>
                                 {types.map((el)=> (
                                     <option value={el.name}>{el.name}</option>
                                 ))}

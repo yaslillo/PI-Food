@@ -1,9 +1,10 @@
 body{
-        background-image: url("../images/bkgCreate.jpg");
+        /* background-image: url("../images/bkgCreate.jpg"); */
         background-size: cover;
         background-attachment: fixed;
         text-align: center;
-
+        /* background-image: url("../images/bkgMadera.jpg"); */
+        background-color: black;
 }
 
 .linkCreate {
@@ -39,9 +40,14 @@ body{
         text-decoration: none;
         }
 
-.text  {
-        font-size: 60px;
+.text   {
+        border-radius:10px;
+        font-size: 100px;
         text-align: center;
+        background-color: rgb(121, 123, 126); 
+        border-color: rgb(197,177,65);
+        color: rgb(197, 183, 104);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
 }
 
 .card {
@@ -55,11 +61,13 @@ body{
 }
 
 .button {
+        padding: 0.5%;
         position: relative;
         bottom: 30 px;
         right: -1050;
         background-color: rgb(121, 123, 126);
         border-color: rgb(197, 177, 65);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
         }
 
 .btnCreate:hover{
@@ -67,17 +75,24 @@ body{
         background-color: rgb(121, 123, 126);
         border-color: rgb(197, 177, 65);
         color: rgb(197, 183, 104);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
 } 
 
 
 .button:hover {
         background-color: rgb(197, 183, 104);
         color: rgb(46, 43, 24);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
         } 
+
 .btnCreate{
         padding:0.5%;
+        background-color: rgb(121, 123, 125);
+        color: rgb(197, 183, 104);
+        box-shadow:6px 6px 6px rgb(223, 208, 124);
 }
 
 .style {
         padding:1%;
+
 }

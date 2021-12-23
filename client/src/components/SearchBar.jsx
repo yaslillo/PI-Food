@@ -27,8 +27,8 @@ function handleSubmit(e){
                 placeholder="Buscar..."
                 onChange={(e) => handleInputChange(e)}
                 />
-                <button type='submit' onClick={(e) => handleSubmit(e)} className="btn">
-                    <span className="input">Buscar</span>
+                <button type='submit' onClick={(e) => handleSubmit(e)} className="btnSearch">
+                    <span className="btnSearch">Buscar</span>
                 </button>
             </div>
         )

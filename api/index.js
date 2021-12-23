@@ -21,6 +21,7 @@ const server = require('./src/app.js');
 const {conn,Recipe,Diet} = require ('./src/db.js')
 const {API_KEY} = process.env;
 const { default : axios} = require('axios')
+const PORT = process.env.PORT || 3001;
 
 conn.sync({ force: false }).then(async() => {
   
@@ -55,7 +56,7 @@ conn.sync({ force: false }).then(async() => {
 })
 
   console.log('base de datos conectada')
-    server.listen(3001, () => {
-    console.log('%s listening at 3001');
+    server.listen(PORT , () => {
+    console.log(`%s listening at ${PORT}`);
   });
 

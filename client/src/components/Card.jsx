@@ -26,4 +26,3 @@ export default function Card ({name,image,score,diet,id}) {
 
 
 
-
