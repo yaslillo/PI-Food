@@ -30,6 +30,7 @@ const getApiInfo = async () =>{
 
                         }
                 })
+                console.log('HERE')
                         return apiInfo;
         }catch(err){
                 console.log(err);
@@ -40,7 +41,6 @@ const getDbInfo = async () =>{
         return await Recipe.findAll({ 
                 include:{
                         model : Diet
-                        
                 }
         })
 }
@@ -71,7 +71,7 @@ const getAllRecipe = async () => {
 //Hago la ruta, que me trae todas las recetas, las pido por query;
 
         router.get('/recipes', async (req, res) => {
-                
+                console.log('HERE')
                 const info = await getAllRecipe();
                 const name = req.query.name;
                 if(!name){
