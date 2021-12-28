@@ -10,7 +10,7 @@ export default function LandingPage() {
             <Link  to='/home' >
                 <img className="logo"src="https://cdn.imusa.com.co/resources/2017/11/vector-utensilios.png" alt="to home" />
             </Link>
-            <h1>Proyecto Individual para Henry Bootcamp: Yasna Lillo.</h1>
+            <h1>Proyecto Individual para Henry Bootcamp: Yas Lillo.</h1>
         </div>
     )
 }

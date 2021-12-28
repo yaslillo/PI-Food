@@ -36,3 +36,27 @@
         }
     }
 
+    /* @media screen and (max-width: 1200px) {
+        .Container .logo {
+            grid-column:1/-1;
+        }
+    }
+    
+    @media screen and (max-width: 992px) {
+        .Container .logo {
+            grid-column:1/-1;
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .Container .logo {
+            grid-column:1/-1;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .Container .logo{
+            grid-column:1/-1;
+        }
+    }
+ */
