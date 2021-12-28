@@ -49,17 +49,6 @@ img.detail{
 
 }
 
-/* .img{
-    display:grid;
-    grid:column;
-    align-items: center;
-    justify-content: center;
-    border: 0.0625rem solid;
-    margin-top: 2px;
-    margin-left:25rem;
-    width: auto;
-    height: auto;
-} */
 
 
 
@@ -67,29 +56,8 @@ img.detail{
     color: white;
 }
 
-/* @media screen and (max-width: 1200px) {
-    .cardDetails img {
-        grid-column:1/-1;
-    }
-}
 
-@media screen and (max-width: 992px) {
-    .cardDetails img{
-        grid-column:1/-1;
-    }
-}
 
-@media screen and (max-width: 768px) {
-    .cardDetails  img{
-        grid-column:1/-1;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .cardDetails img{
-        grid-column:1/-1;
-    }
-} */
 
 
 
