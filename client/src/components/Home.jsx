@@ -71,7 +71,7 @@ function handleFilterCreated(e) {
 //------------------------------------------------------------------------------------//
     return(
         <div>
-            <h1 className="text">LAS MEJORES RECETAS</h1> 
+            <h1 className="text">RECETAS</h1> 
             <Link to='/recipe/'className="linkCreate">
                 <button className="button">Crear Receta</button>
                 </Link>

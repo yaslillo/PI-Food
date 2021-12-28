@@ -1,39 +1,42 @@
+*{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+}
+
 body{
-        /* background-image: url("../images/bkgCreate.jpg"); */
+        background-image: repeating-linear-gradient(90deg,black,black 20px,rgba(0, 0, 0, 0.897) 20px,rgba(0, 0, 0, 0.897) 40px);
         background-size: cover;
         background-attachment: fixed;
         text-align: center;
-        /* background-image: url("../images/bkgMadera.jpg"); */
-        background-color: black;
+        font-family: 'Helvetica Neue';
+        font-size:16px;
+        font-weight: 300;
 }
 
 .linkCreate {
         text-decoration: none;
-        font-size: 60px;
+        font-size: 3.75rem;
         display: block;
         text-align: center;
-        } 
-
-.btnPag {
-        margin-bottom: 20px;
         }
 
+.btnPag {
+        margin-bottom: 1.25rem;
+        }
+/*boton de paginado*/
 .btnPag button {
-        background-color: rgb(121, 123, 126);
-        border-color: rgb(197, 177, 65);
+        background-image: url("../images/negrodegrade.jpg");
+        /* background-color: #30261a; */
+        border-color: #30261a;
+        color:white;
+        box-shadow:0.375rem 0.375rem 0.375rem white;
+        cursor:pointer;
         }
 
 .btnPag button:hover {
-        color: rgb(46, 43, 24);
-        background-color: rgb(197, 183, 104);
-        }
-
-.cards {
-        margin-left: 7%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 60px;
+        color: white;
+        background-color:white;
         }
 
 .linkCard {
@@ -41,58 +44,70 @@ body{
         }
 
 .text   {
-        border-radius:10px;
-        font-size: 100px;
+        border-radius:0.625rem;
+        font-size: 4.375rem;
         text-align: center;
-        background-color: rgb(121, 123, 126); 
-        border-color: rgb(197,177,65);
-        color: rgb(197, 183, 104);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        color: white;
+        font-family:'Helvetica Neue';
+
+}
+
+.text:hover{
+        color: white;
 }
 
 .card {
         display: flex;
         flex-wrap: wrap;
-        grid-gap:15px;
+        grid-gap:0.9375rem;
         width: 70%;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-}
+        padding:0.5%;
+} 
 
-.button {
-        padding: 0.5%;
+.button.button {
+        padding: 0.1%;
         position: relative;
-        bottom: 30 px;
+        bottom: 2,5rem;
         right: -1050;
-        background-color: rgb(121, 123, 126);
-        border-color: rgb(197, 177, 65);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        border-color: black;
+        box-shadow:0.375rem 0.375rem 0.375rem white;
+        background-image: url("../images/negrodegrade.jpg");
+        background-color: white;
+        color: white;
+
         }
 
 .btnCreate:hover{
         text-align: center;
-        background-color: rgb(121, 123, 126);
-        border-color: rgb(197, 177, 65);
-        color: rgb(197, 183, 104);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
-} 
-
-
-.button:hover {
-        background-color: rgb(197, 183, 104);
-        color: rgb(46, 43, 24);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
-        } 
+        background-color:  black;
+        border-color: black;
+        color: white;
+        box-shadow:6px 6px 6px white;
+}
 
 .btnCreate{
         padding:0.5%;
-        background-color: rgb(121, 123, 125);
-        color: rgb(197, 183, 104);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        background-image: url("../images/negrodegrade.jpg");
+        color: white;
+        box-shadow:0.375rem 0.375rem 0.375rem white;
 }
 
 .style {
         padding:1%;
+}
+
+.button{
+        font-size:0.3em;
+}
+
+button{
+        font-size:1.3em;
 
 }
+
+
+
+

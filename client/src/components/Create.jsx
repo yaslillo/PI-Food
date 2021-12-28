@@ -89,7 +89,7 @@ useEffect(() => {
 },[dispatch]);
 
     return (
-        <div className="cardcontainer">
+        <div className="comp">
             <h1 >Crea tu receta</h1>
             <form onSubmit={(e) =>handleSubmit(e)}>
                 <div>
@@ -148,7 +148,7 @@ useEffect(() => {
                                 ))}
                             </select>
                             <ul><li>{input.diet.map(el => el + " ,")}</li></ul>
-                            <div className="content">
+                            <div>
                             <button className="btnCreate" type='submit'>Crear Receta</button>
                             </div>
                         </div>

@@ -1,45 +1,43 @@
 .cardDetails {
-
-    border-radius: 1rem;
-    background-color:#cecbc669;
-    background-position: absolute;
-    background: cover;
-    box-shadow: 9px 9px 9px rgb(230, 206, 73);
-    color: rgb(8, 8, 8);
-    display: inline-block;
-    margin: 10%;
-    padding: 2em;
-    vertical-align: center;
-    width: 30, 5%;
-    height: 30, 5%;
-}  
-
-
-.cardDetails img {
-    display: flex;
-    margin-left: 30%;
-    width: 35%;
-    height: 60%;
-    justify-content: center;
-    border-radius: 1rem;
-    box-shadow: 9px 9px 9px rgb(230, 206, 73);
+    display: grid;
+    /* grid-gap: wrap; */
+    grid-gap:0.9375rem;
+    width: 80%;
+    justify-content:center;
+    text-align: center;
+    margin-left: 10.5rem;
+    margin-right: 10.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    
 }
 
-.cardDetails h1:hover{
-    text-decoration: underline darkslategrey;
-    color: rgb(69, 70, 63);
-    text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
+h1{
+    font-family: 'Helvetica Neune';
+    /* color:#9EF5CD; */
+    color:white;
 }
 
-.cardDetails h2:hover{
-    text-decoration: underline darkslategrey;
-    color: rgb(69, 70, 63);
-    text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
+h2{
+    font-family: 'Helvetica Neune';
+    color: white;
+    margin-left: 12.5rem;
+    margin-right: 12.5rem;
 }
 
-.cardDetails img:hover{
-    text-decoration: underline darkslategrey;
-    color: rgb(69, 70, 63);
-    text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
-} 
+.cardDetails img{
+    padding: 1rem;
+    width: 50%;
+    height: 50vh;
+    margin-left: 24.5rem;
+    box-shadow: 0.375rem 0.375rem 0.375rem white;
+
+}
+
+.description p{
+    color: white;
+}
+
+
+
 

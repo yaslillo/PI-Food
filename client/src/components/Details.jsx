@@ -20,19 +20,19 @@ const [detail,setDetail]=useState(null)
 
 
     return (                                        
-        <div className="cardDetails">
+        <div>
             { 
                     detail ? 
-                    <div>
-                        <h1>Nombre de Receta:{detail[0]?.name}</h1>
+                    <div className="cardDetails">
                         <img src={detail[0]?.image} alt="img not found" width="200px" height="250px"/>
-                        <h2>Puntuación:{detail[0]?.score}</h2>
+                        <h1>Nombre de Receta:{detail[0]?.name}</h1>
                         <h2>Resumen:{detail[0]?.resume.replace(/<[^>]*>?/g, '')}</h2>
                         <h2>Nivel de comida saludable:{detail[0]?.healthylevel}</h2>
                         <h2>Paso a paso:{detail[0]?.stepbystep}</h2>
+                        <h2>Puntuación:{detail[0]?.score}</h2>
                         <h2>Dietas:{!detail[0]?.createdIndb? detail[0]?.diet?.join(", ") : detail[0]?.diet?.map((el) => el.name).join(", ")}</h2>
                         </div>  
-                : <p>Cargando..........</p> 
+                : <p className="description">Cargando..........</p> 
             } 
             <div>
                             <Link to={'/home'}>

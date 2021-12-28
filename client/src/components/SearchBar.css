@@ -3,52 +3,63 @@
     
 }
 
-
-input{
+.input {
     border: ridge;
     padding: 0.4%;
     position: relative;
     bottom: 30 px;
     right: -1050;
-    background-color: rgb(121, 123, 126);
-    border-color: rgb(197, 177, 65);
-    box-shadow:6px 6px 6px rgb(223, 208, 124);
     font-size: 1em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-shadow: 3px 2px 1px rgb(197, 177, 65);
-    border-radius: 3px;
+    font-family:'Helvetica Neue';
+    border-radius: 0.375rem;
+    background-image: url("../images/negrodegrade.jpg");
+    border-color:black;
+    box-shadow:0.375rem 0.375rem 0.375rem white;
     }
 
-input:hover{
-    background-image: linear-gradient(to bottom, rgb(119, 119, 119), #121313);
+.input:hover{
+    background-image: linear-gradient( white, white);
     font-weight:bold;
     
     }
 
 button.btnSearch{
         padding:0.5%;
-        background-color: rgb(121, 123, 125);
-        color: rgb(197, 183, 104);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        background-image: url("../images/negrodegrade.jpg");
+        /* background-color: #30261a; */
+        border-color:#30261a;
+        box-shadow:0.375rem 0.375rem 0.375rem white;
+        color:white;
+        border-radius:0.375rem;
 
 }
 
 button.btnSearch:hover{
     text-align: center;
-    background-color: rgb(121, 123, 126);
-    border-color: rgb(197, 177, 65);
-    color: rgb(197, 183, 104);
-    box-shadow:6px 6px 6px rgb(223, 208, 124);
+    color: white;
+    background-image: url("../images/negrodegrade.jpg");
+    background-color: white; 
+    border-color:black;
+    box-shadow:0.375rem 0.375rem 0.375rem white;
+
     }
 
 button.btnSearch {
         position: relative;
         bottom: 30 px;
         right: -1050;
-        background-color: rgb(121, 123, 126);
-        border-color: rgb(197, 177, 65);
-        box-shadow:6px 6px 6px rgb(223, 208, 124);
+        background-image: url("../images/negrodegrade.jpg");
+        background-color:white;
+        border-color:black;
+        color:white;
+        box-shadow:0.375rem 0.375rem 0.375rem white;
         }
+
+input input{
+    color:white;
+    
+}
+
 
 
 

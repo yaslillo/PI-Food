@@ -1,60 +1,41 @@
-.cardcontainer {
+form{
+    background-image: url("../images/negrodegrade.jpg");
+    margin-left: 0rem;
+    margin-right: 0rem;
+    color:white;
+    font-size:1.5625rem;
+    font-family: "Helvetica Neue";
+    margin-top:0.5%;
+    flex-direction:wrap;
+    display:wrap;
+    height:100%;
+    width: 100%;
+    
+    
 
-    border-radius: 2rem;
-    background-color: rgb(121, 123, 126); 
-    background-position: absolute;
-    background: cover;
-    box-shadow: 6px 6px 6px rgb(223, 208, 124);
-    color: rgb(8, 8, 8);
-    display: inline-block;
-    position: relative;
-    margin: 10%;
-    padding: 7em;
-    vertical-align: center;
-    width: 35, 10%;
-    height: 35, 10%;
-    align-items: center;
-    justify-content: center;
+
 }
 
-.cardcontainer input {
-
-    display: flex;
-    text-align: center;
-    padding:0.5em;
-    margin-top: 5px;
-    color: rgb(223, 208, 124);
-    text-shadow: rgb(9, 9, 9) -2px 2px;
+.comp{
+    margin-top:10%;
+    width:100%;
+    height:100%;
 }
 
-/* .cardcontainer h3:hover {
+label{
+    padding:1%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content:center;
+    display:inline-block;
+}
 
-    text-decoration: underline darkslategrey;
-    color: rgb(69, 70, 63);
-    text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
-} */
-/* .cardContainer img {
-    display: flex;
-    margin-left: 20%;
-    width: 40%;
-    height: 60%;
-    justify-content: center;
-    border-radius: 2rem;
-} */
-
-/* .cardcontainer img:hover {
-
-    border: 2px outset rgba(119, 98, 28, 0.8);
-} */
-
-/* .score {
-
-    color: rgb(223, 208, 124);
-    float: right;
-} */
-
-.content {
-    text-align: center;
-    display:flex;
-    align-items: center;
+button.btnCreate{
+    font-size:1.125rem;
+    bottom: 3.125rem;
+    padding: 0.3125rem;
+    display:inline-block;
+    justify-content:center;
+    margin-top: 0.700rem;
+    margin-bottom: 0.7125rem;
 }
