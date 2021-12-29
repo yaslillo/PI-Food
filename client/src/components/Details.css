@@ -1,6 +1,5 @@
 h1 {
     font-family: 'Helvetica Neune';
-    /* color:#9EF5CD; */
     color: white;
     margin-left: 12.5rem;
     margin-right: 12.5rem;
@@ -23,9 +22,138 @@ img.detail {
     height: 30vh;
     margin-top: 2rem;
     margin-left: 5rem;
-    /* margin-left: 12.5rem; */
 }
 
 .description p {
     color: white;
 }
+
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+        margin-top: 0rem;
+    }
+    
+    li {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+    }
+    
+    img.detail {
+        position: relative;
+        justify-items: center;
+        float: center;
+        padding: 1rem;
+        width: 30%;
+        height: 30vh;
+        margin-top: 2rem;
+        margin-left: 5rem;
+    }
+    
+    .description p {
+        color: white;
+    }
+    }
+    
+@media screen and (max-width: 992px) {
+    h1 {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+        margin-top: 0rem;
+    }
+    
+    li {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+    }
+    
+    img.detail {
+        position: relative;
+        justify-items: center;
+        float: center;
+        padding: 1rem;
+        width: 30%;
+        height: 30vh;
+        margin-top: 2rem;
+        margin-left: 5rem;
+    }
+    
+    .description p {
+        color: white;
+    }
+    }
+    
+@media screen and (max-width: 768px) {
+    h1 {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+        margin-top: 0rem;
+    }
+    
+    li {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+    }
+    
+    img.detail {
+        position: relative;
+        justify-items: center;
+        float: center;
+        padding: 1rem;
+        width: 30%;
+        height: 30vh;
+        margin-top: 2rem;
+        margin-left: 5rem;
+    }
+    
+    .description p {
+        color: white;
+    }
+    }
+    
+@media screen and (max-width: 576px) {
+    h1 {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+        margin-top: 0rem;
+    }
+    
+    li {
+        font-family: 'Helvetica Neune';
+        color: white;
+        margin-left: 12.5rem;
+        margin-right: 12.5rem;
+    }
+    
+    img.detail {
+        position: relative;
+        justify-items: center;
+        float: center;
+        padding: 1rem;
+        width: 30%;
+        height: 30vh;
+        margin-top: 2rem;
+        margin-left: 5rem;
+    }
+    
+    .description p {
+        color: white;
+    }
+    }
+
+

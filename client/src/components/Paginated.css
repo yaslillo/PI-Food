@@ -2,9 +2,6 @@ section.btnPag {
     padding: 1%;
 }
 
-/* .btnPag {
-	margin:20 0rem;
-}  */
 
 .btnPag a:hover {
     background: white;
@@ -19,3 +16,88 @@ section.btnPag {
     color: white;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 1200px) {
+    section.btnPag {
+        padding: 1%;
+    }
+    
+    
+    .btnPag a:hover {
+        background: white;
+    }
+    
+    .btnPag .active {
+        background: white;
+        font-weight: bold;
+    }
+    
+    .button {
+        color: white;
+        cursor: pointer;
+    }
+    }
+    
+@media screen and (max-width: 992px) {
+    section.btnPag {
+        padding: 1%;
+    }
+    
+    
+    .btnPag a:hover {
+        background: white;
+    }
+    
+    .btnPag .active {
+        background: white;
+        font-weight: bold;
+    }
+    
+    .button {
+        color: white;
+        cursor: pointer;
+    }
+    }
+    
+@media screen and (max-width: 768px) {
+    section.btnPag {
+        padding: 1%;
+    }
+    
+    
+    .btnPag a:hover {
+        background: white;
+    }
+    
+    .btnPag .active {
+        background: white;
+        font-weight: bold;
+    }
+    
+    .button {
+        color: white;
+        cursor: pointer;
+    }
+    }
+    
+@media screen and (max-width: 576px) {
+    section.btnPag {
+        padding: 1%;
+    }
+    
+    
+    .btnPag a:hover {
+        background: white;
+    }
+    
+    .btnPag .active {
+        background: white;
+        font-weight: bold;
+    }
+    
+    .button {
+        color: white;
+        cursor: pointer;
+    }
+    }
