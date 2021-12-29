@@ -1,25 +1,21 @@
-section.btnPag{
-	padding:1%;
-
+section.btnPag {
+    padding: 1%;
 }
 
 /* .btnPag {
 	margin:20 0rem;
 }  */
 
-.btnPag  a:hover {
-	background:white;
+.btnPag a:hover {
+    background: white;
 }
 
-.btnPag  .active {
-	background:white;
-	font-weight:bold;
-
-} 
-
-.button{
-	color:white;
-	cursor:pointer;
+.btnPag .active {
+    background: white;
+    font-weight: bold;
 }
 
-
+.button {
+    color: white;
+    cursor: pointer;
+}
