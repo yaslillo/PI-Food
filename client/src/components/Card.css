@@ -195,8 +195,6 @@ h3 {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(4, auto);
             width: 18.75rem;
-            height: 25rem;
-            box-shadow: 0.375rem 0.375rem 0.375rem white;
         }
         
         img.imgcard {
